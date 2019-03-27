@@ -1,5 +1,4 @@
-# ToneZ
-Example Inno Setup script
+# ToneZ - Inno Setup script
 
 1) Download this folder
 
