@@ -1,3 +1,8 @@
 # ToneZ
-ToneZ free plugin made in Cabbage
-https://t0nit0rmx.github.io/plugins/tonez
+Example INNO setup script
+
+Please note : 
+
+ToneZ_dll => Replace it with you .dll ==> The plugin exported from Cabbage
+csound_64_dll => Remplace it with csound64.dll ==> From Csound installation
+ToneZ.csd => Replace it with your .csd
