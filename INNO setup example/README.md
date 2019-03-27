@@ -1,4 +1,4 @@
-# ToneZ - Inno Setup script
+# ToneZ - Inno Setup script (Windows installer)
 
 1) Download this folder
 
