@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="100"
+   height="50"
+   id="svg2"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="taboff.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="756"
+     inkscape:window-height="690"
+     id="namedview2990"
+     showgrid="false"
+     inkscape:zoom="2"
+     inkscape:cx="-37.5"
+     inkscape:cy="-11.240002"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5989"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#080c10;stop-opacity:1;"
+         offset="0"
+         id="stop5987" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5983"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop5981" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4529"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#080c10;stop-opacity:1;"
+         offset="0"
+         id="stop4527" />
+    </linearGradient>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="fill:#b0d8e6;fill-opacity:1;stroke:#ececec;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+     id="rect11"
+     width="100.89374"
+     height="61.490471"
+     x="-0.0034747422"
+     y="0.0024169385" />
+  <rect
+     style="fill:#0b151f;fill-opacity:1;stroke:#ececec;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+     id="rect6015"
+     width="100.89374"
+     height="54.604179"
+     x="-0.0034747422"
+     y="0.0024168803"
+     ry="0" />
+</svg>
