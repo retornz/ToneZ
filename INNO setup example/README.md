@@ -1,8 +1,10 @@
 # ToneZ
 Example INNO setup script
 
-Please note : 
+1) Download this folder
 
-ToneZ_dll => Replace it with you .dll ==> The plugin exported from Cabbage
-csound_64_dll => Remplace it with csound64.dll ==> From Csound installation
-ToneZ.csd => Replace it with your .csd
+2) Replace the AppID code in INNO setup
+
+3) Execute the innosetup file in innosetup
+
+4) That's it ! Now modify the code to suit your needs
