@@ -3,7 +3,7 @@
 ;****************************************************************************
 ;****************************************************************************
 ;****************************************************************************
-;                           ToneZ v1.1.1
+;                           ToneZ v1.2
 ;                       T0NIT0 RMX - 2019
 ;                   https://t0nit0rmx.github.io
 ;
@@ -25,10 +25,10 @@
 ;******************STYLES
 #define rsliderstyle colour(20,30,40,0), fontcolour("silver"), trackercolour("lightblue"), outlinecolour(70,70,70,100), trackerinsideradius(.8), style("normal")
 #define nsliderstyle colour(11,21,31), fontcolour("silver"), trackercolour("lightblue")
-#define buttonstyle imgfile("on", "img/buttonon.svg"), imgfile("off", "img/buttonoff.svg"), fontcolour:1("white"), fontcolour:0(220,220,220)
-#define buttonstyleon imgfile("on", "img/buttonon.svg"), imgfile("off", "img/buttonon.svg"), fontcolour:1("white"), fontcolour:1("white")
-#define buttontabstyle imgfile("on", "img/tabon.svg"), imgfile("off", "img/taboff.svg"), fontcolour:1("white"), fontcolour:0(220,220,220)
-#define checkboxstyle imgfile("on", "img/buttonon.svg"), imgfile("off", "img/buttonoff.svg"), fontcolour:1("white"), fontcolour:0(220,220,220), colour("lightblue")
+#define buttonstyle imgfile("on", "img/buttonon.svg"), imgfile("off", "img/buttonoff.svg"), fontcolour:1("white"), fontcolour:0(220,220,220), colour("lightblue")
+#define buttonstyleon imgfile("on", "img/buttonon.svg"), imgfile("off", "img/buttonon.svg"), fontcolour:1("white"), fontcolour:1("white"), colour:0("lightblue"), colour:1("lightblue")
+#define buttontabstyle fontcolour:1("white"), fontcolour:0(220,220,220), colour("lightblue"), imgfile("on", "img/tabon.svg"), imgfile("off", "img/taboff.svg")
+#define checkboxstyle fontcolour:1("white"), fontcolour:0(220,220,220), colour("lightblue"), imgfile("on", "img/buttonon.svg"), imgfile("off", "img/buttonoff.svg")
 #define bgstyle colour(20, 30, 40)
 #define bgtabstyle file("img/tab.svg")
 #define hsliderstyle trackercolour(0, 0, 0, 0) colour("lightblue")   textcolour(0, 0, 0, 0) fontcolour(0, 0, 0, 0), imgfile("Slider", "img/slidt.svg")imgfile("Background", "img/slidbg.svg")
@@ -63,8 +63,9 @@ groupbox bounds(560, 0, 172, 407), plant("GUI_HEADER"){
     rslider bounds(15, 347, 47, 43), text("Leg.Time"),    channel("LegTim"), range(1, 5000, 100, 0.25, 1), popuppostfix(" ms"), $rsliderstyle
     label bounds(77, 375, 40, 11), text("Retrig")
     checkbox   bounds(120, 375, 10, 10), channel("SARetrig"), , identchannel("SARetrigID"), $checkboxstyle
-    
+    button bounds(0, 0, 160, 70), channel("BUTTON_PANIC"),latched(0), alpha(0)
     button bounds(100, 2, 58, 20), channel("BUTTON_ABOUT") text("About..."),latched(0), $buttonstyle
+    
     label bounds(47,127,150,15), text("PRESETS")
     label bounds(30,328,150,15), text("PORTAMENTO")
     label bounds(50,282,150,15), text("EXPERT")
@@ -243,10 +244,10 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         button bounds(43, 30, 38, 17),   channel("env2osc2"), identchannel("ENV2OSC2_BUTTON"), text("OSC2"), value(0), $checkboxstyle
         button bounds(81, 30, 38, 17),  channel("env2osc3"), identchannel("ENV2OSC3_BUTTON"), text("OSC3"), value(0), $checkboxstyle
         button bounds(119, 30, 38, 17),  channel("env2osc4"), identchannel("ENV2OSC4_BUTTON"), text("OSC4"), value(0), $checkboxstyle
-        button bounds(5, 7, 38, 17),     channel("env2amp"), text("Amp"), radiogroup(102), value(1), $buttonstyle 
-        button bounds(43, 7, 38, 17),     channel("env2pitch"), text("Pitch"), radiogroup(102), $buttonstyle 
-        button bounds(81, 7, 38, 17),     channel("env2morph"), text("Morph"), radiogroup(102), $buttonstyle  
-        button bounds(119, 7, 38, 17),     channel("env2filter"), text("Filter"), radiogroup(102), $buttonstyle
+        button bounds(5, 7, 38, 17),     channel("env2amp"), text("Amp"), radiogroup(103), value(1), $buttonstyle 
+        button bounds(43, 7, 38, 17),     channel("env2pitch"), text("Pitch"), radiogroup(103), $buttonstyle 
+        button bounds(81, 7, 38, 17),     channel("env2morph"), text("Morph"), radiogroup(103), $buttonstyle  
+        button bounds(119, 7, 38, 17),     channel("env2filter"), text("Filter"), radiogroup(103), $buttonstyle
         button bounds(175, 30, 38, 17),  channel("env2slope"), text("EXP","LIN"), value(0), $buttonstyleon 
     }
     groupbox bounds(0, 20, 230, 110), visible(0) , identchannel("GROUP_ENV3"), plant("GUI_ENV3"){
@@ -262,10 +263,10 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         button bounds(43, 30, 38, 17),   channel("env3osc2"), identchannel("ENV3OSC2_BUTTON"), text("OSC2"), value(0), $checkboxstyle
         button bounds(81, 30, 38, 17),  channel("env3osc3"), identchannel("ENV3OSC3_BUTTON"), text("OSC3"), value(0), $checkboxstyle
         button bounds(119, 30, 38, 17),  channel("env3osc4"), identchannel("ENV3OSC4_BUTTON"), text("OSC4"), value(0), $checkboxstyle
-        button bounds(5, 7, 38, 17),     channel("env3amp"), text("Amp"), radiogroup(102), value(1), $buttonstyle 
-        button bounds(43, 7, 38, 17),     channel("env3pitch"), text("Pitch"), radiogroup(102), $buttonstyle 
-        button bounds(81, 7, 38, 17),     channel("env3morph"), text("Morph"), radiogroup(102), $buttonstyle  
-        button bounds(119, 7, 38, 17),     channel("env3filter"), text("Filter"), radiogroup(102), $buttonstyle
+        button bounds(5, 7, 38, 17),     channel("env3amp"), text("Amp"), radiogroup(104), value(1), $buttonstyle 
+        button bounds(43, 7, 38, 17),     channel("env3pitch"), text("Pitch"), radiogroup(104), $buttonstyle 
+        button bounds(81, 7, 38, 17),     channel("env3morph"), text("Morph"), radiogroup(104), $buttonstyle  
+        button bounds(119, 7, 38, 17),     channel("env3filter"), text("Filter"), radiogroup(104), $buttonstyle
         button bounds(175, 30, 38, 17),  channel("env3slope"), text("EXP","LIN"), value(0), $buttonstyleon 
     }
     groupbox bounds(0, 20, 230, 110), visible(0) , identchannel("GROUP_ENV4"), plant("GUI_ENV4"){
@@ -281,19 +282,19 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         button bounds(43, 30, 38, 17),   channel("env4osc2"), identchannel("ENV4OSC2_BUTTON"), text("OSC2"), value(0), $checkboxstyle
         button bounds(81, 30, 38, 17),  channel("env4osc3"), identchannel("ENV4OSC3_BUTTON"), text("OSC3"), value(0), $checkboxstyle
         button bounds(119, 30, 38, 17),  channel("env4osc4"), identchannel("ENV4OSC4_BUTTON"), text("OSC4"), value(0), $checkboxstyle
-        button bounds(5, 7, 38, 17),     channel("env4amp"), text("Amp"), radiogroup(102), value(1), $buttonstyle 
-        button bounds(43, 7, 38, 17),     channel("env4pitch"), text("Pitch"), radiogroup(102), $buttonstyle 
-        button bounds(81, 7, 38, 17),     channel("env4morph"), text("Morph"), radiogroup(102), $buttonstyle  
-        button bounds(119, 7, 38, 17),     channel("env4filter"), text("Filter"), radiogroup(102), $buttonstyle
+        button bounds(5, 7, 38, 17),     channel("env4amp"), text("Amp"), radiogroup(105), value(1), $buttonstyle 
+        button bounds(43, 7, 38, 17),     channel("env4pitch"), text("Pitch"), radiogroup(105), $buttonstyle 
+        button bounds(81, 7, 38, 17),     channel("env4morph"), text("Morph"), radiogroup(105), $buttonstyle  
+        button bounds(119, 7, 38, 17),     channel("env4filter"), text("Filter"), radiogroup(105), $buttonstyle
         button bounds(175, 30, 38, 17),  channel("env4slope"), text("EXP","LIN"), value(0), $buttonstyleon 
     }
     image        bounds(205, 2, 18, 18), file("img/warning.png"), identchannel("WARN_ENVSIGN"), visible(0)
     rslider  bounds(188,3,50,20), popuptext("You are using 2 envelopes of the same type on the same oscillator. Unexpected behaviour may occur. Click on the 'About...' button (top right) & read the user manual for more infos."), identchannel("WARN_ENVMSG"), visible(0), alpha(0)
     
-    button bounds(0, 3, 50, 19),text("ENV1"),channel("ENV1_BUTTON"), radiogroup(101), $buttontabstyle, value(1)
-    button bounds(50, 3, 50, 19),text("ENV2"),channel("ENV2_BUTTON"), radiogroup(101), $buttontabstyle
-    button bounds(100, 3, 50, 19),text("ENV3"),channel("ENV3_BUTTON"), radiogroup(101), $buttontabstyle
-    button bounds(150, 3, 50, 19),text("ENV4"),channel("ENV4_BUTTON"), radiogroup(101), $buttontabstyle
+    button bounds(0, 3, 50, 19),text("ENV1"),channel("ENV1_BUTTON"), radiogroup(106), $buttontabstyle, value(1)
+    button bounds(50, 3, 50, 19),text("ENV2"),channel("ENV2_BUTTON"), radiogroup(106), $buttontabstyle
+    button bounds(100, 3, 50, 19),text("ENV3"),channel("ENV3_BUTTON"), radiogroup(106), $buttontabstyle
+    button bounds(150, 3, 50, 19),text("ENV4"),channel("ENV4_BUTTON"), radiogroup(106), $buttontabstyle
     
 }
 
@@ -317,10 +318,10 @@ groupbox bounds(320, 140, 230, 125), , identchannel("GROUP_LFOALL"), plant("GUI_
         button bounds(81, 30, 38, 17),     channel("lfo1osc3"), identchannel("LFO1OSC3_BUTTON"), text("OSC3"),value(1), $checkboxstyle
         button bounds(119, 30, 38, 17),    channel("lfo1osc4"), identchannel("LFO1OSC4_BUTTON"), text("OSC4"),value(1), $checkboxstyle
          
-        button bounds(5, 7, 38, 17),     channel("lfo1amp"), text("Amp"), radiogroup(102), value(1), $buttonstyle 
-        button bounds(43, 7, 38, 17),     channel("lfo1pitch"), text("Pitch"), radiogroup(102), $buttonstyle 
-        button bounds(81, 7, 38, 17),     channel("lfo1morph"), text("Morph"), radiogroup(102), $buttonstyle  
-        button bounds(119, 7, 38, 17),     channel("lfo1filter"), text("Filter"), radiogroup(102), $buttonstyle 
+        button bounds(5, 7, 38, 17),     channel("lfo1amp"), text("Amp"), radiogroup(107), value(1), $buttonstyle 
+        button bounds(43, 7, 38, 17),     channel("lfo1pitch"), text("Pitch"), radiogroup(107), $buttonstyle 
+        button bounds(81, 7, 38, 17),     channel("lfo1morph"), text("Morph"), radiogroup(107), $buttonstyle  
+        button bounds(119, 7, 38, 17),     channel("lfo1filter"), text("Filter"), radiogroup(107), $buttonstyle 
     }
      groupbox bounds(0, 20, 230, 110), visible(0) , identchannel("GROUP_LFO2"), plant("GUI_LFO2"){
         image    bounds(0, 0, 230, 110), colour(20, 30, 40, 255), $bgtabstyle
@@ -336,14 +337,14 @@ groupbox bounds(320, 140, 230, 125), , identchannel("GROUP_LFOALL"), plant("GUI_
         button bounds(43, 30, 38, 17),     channel("lfo2osc2"), identchannel("LFO2OSC2_BUTTON"), text("OSC2"), $checkboxstyle
         button bounds(81, 30, 38, 17),     channel("lfo2osc3"), identchannel("LFO2OSC3_BUTTON"), text("OSC3"), $checkboxstyle
         button bounds(119, 30, 38, 17),    channel("lfo2osc4"), identchannel("LFO2OSC4_BUTTON"), text("OSC4"), $checkboxstyle
-        button bounds(5, 7, 38, 17),       channel("lfo2amp"), text("Amp"), radiogroup(102), value(1), $buttonstyle 
-        button bounds(43, 7, 38, 17),      channel("lfo2pitch"), text("Pitch"), radiogroup(102), $buttonstyle 
-        button bounds(81, 7, 38, 17),      channel("lfo2morph"), text("Morph"), radiogroup(102), $buttonstyle  
-        button bounds(119, 7, 38, 17),     channel("lfo2filter"), text("Filter"), radiogroup(102), $buttonstyle 
+        button bounds(5, 7, 38, 17),       channel("lfo2amp"), text("Amp"), radiogroup(108), value(1), $buttonstyle 
+        button bounds(43, 7, 38, 17),      channel("lfo2pitch"), text("Pitch"), radiogroup(108), $buttonstyle 
+        button bounds(81, 7, 38, 17),      channel("lfo2morph"), text("Morph"), radiogroup(108), $buttonstyle  
+        button bounds(119, 7, 38, 17),     channel("lfo2filter"), text("Filter"), radiogroup(108), $buttonstyle 
     }
    
-    button bounds(0, 3, 50, 19),text("LFO1"),channel("LFO1_BUTTON"), radiogroup(101),  $buttontabstyle, value(1)
-    button bounds(50, 3, 50, 19),text("LFO2"),channel("LFO2_BUTTON"), radiogroup(101),  $buttontabstyle
+    button bounds(0, 3, 50, 19),text("LFO1"),channel("LFO1_BUTTON"), radiogroup(109),  $buttontabstyle, value(1)
+    button bounds(50, 3, 50, 19),text("LFO2"),channel("LFO2_BUTTON"), radiogroup(109),  $buttontabstyle
 }
 
 
@@ -396,8 +397,8 @@ groupbox bounds(5, 140, 305, 125), , identchannel("GROUP_FILTERALL"), plant("GUI
         button bounds(5, 55, 38, 17), channel("filter2osc3"), text("OSC3"), identchannel("FILTER2BUT3"), $checkboxstyle
         button bounds(5, 75, 38, 17),channel("filter2osc4"), text("OSC4"), identchannel("FILTER2BUT4"), $checkboxstyle
     }
-    button bounds(0, 3, 50, 19),text("FILTER1"), channel("FILTER1_BUTTON"), radiogroup(101), $buttontabstyle, value(1)
-    button bounds(50, 3, 50, 19),text("FILTER2"), channel("FILTER2_BUTTON"), radiogroup(101), $buttontabstyle
+    button bounds(0, 3, 50, 19),text("FILTER1"), channel("FILTER1_BUTTON"), radiogroup(110), $buttontabstyle, value(1)
+    button bounds(50, 3, 50, 19),text("FILTER2"), channel("FILTER2_BUTTON"), radiogroup(110), $buttontabstyle
 }
 
 
@@ -480,12 +481,12 @@ groupbox bounds(5, 275, 545, 115), , identchannel("GROUP_EFFECTALL"), plant("GUI
         rslider bounds(350, 30, 50, 50), channel("compHighKnee"), text("High Knee"), range(0,120,60), popuppostfix(" dB"), $rsliderstyle
         rslider bounds(485, 40, 45, 45), range(0, 100, 100, 1, 0.01), channel("drywetcomp"), text("Dry/Wet"), popuppostfix(" %"), $rsliderstyle
     }
-    button bounds(0, 3, 50, 19),text("DIST"), channel("EFFECT1_BUTTON"), radiogroup(101), $buttontabstyle, value(1)
-    button bounds(50, 3, 50, 19),text("EQ"), channel("EFFECT3_BUTTON"), radiogroup(101), $buttontabstyle
-    button bounds(100, 3, 50, 19),text("CHORUS"), channel("EFFECT2_BUTTON"), radiogroup(101), $buttontabstyle
-    button bounds(150, 3, 50, 19),text("DELAY"), channel("EFFECT5_BUTTON"), radiogroup(101), $buttontabstyle
-    button bounds(200, 3, 50, 19),text("REVERB"), channel("EFFECT4_BUTTON"), radiogroup(101), $buttontabstyle
-    button bounds(250, 3, 50, 19),text("COMP"), channel("EFFECT6_BUTTON"), radiogroup(101), $buttontabstyle
+    button bounds(0, 3, 50, 19),text("DIST"), channel("EFFECT1_BUTTON"), radiogroup(111), $buttontabstyle, value(1)
+    button bounds(50, 3, 50, 19),text("EQ"), channel("EFFECT3_BUTTON"), radiogroup(111), $buttontabstyle
+    button bounds(100, 3, 50, 19),text("CHORUS"), channel("EFFECT2_BUTTON"), radiogroup(111), $buttontabstyle
+    button bounds(150, 3, 50, 19),text("DELAY"), channel("EFFECT5_BUTTON"), radiogroup(111), $buttontabstyle
+    button bounds(200, 3, 50, 19),text("REVERB"), channel("EFFECT4_BUTTON"), radiogroup(111), $buttontabstyle
+    button bounds(250, 3, 50, 19),text("COMP"), channel("EFFECT6_BUTTON"), radiogroup(111), $buttontabstyle
 }
 
 
@@ -495,16 +496,17 @@ button bounds(0, 0, 719, 468), visible(0), colour(0,0,0), alpha(0), identchannel
 ;ABOUT TAB
 groupbox bounds(100, 100, 500, 300), visible(0) , identchannel("GROUP_ABOUT"), plant("GUI_ABOUT"){
     image    bounds(0, 0, 500, 300), colour(20, 30, 40, 255)
-    label    bounds(0,20,500,20), text("ToneZ by T0NIT0 RMX - v1.1.1")
+    label    bounds(0,20,500,20), text("ToneZ by T0NIT0 RMX - v1.2")
+    infobutton bounds(400, 18, 100, 23), text("Check for updates"), file("https://t0nit0rmx.github.io/utils/tonez_uc?v=1.2"), latched(0), $buttonstyle
     label    bounds(130,100,100,10), text("[[USER MANUAL]]")
     image        bounds(100, 70, 150, 72), file("img/AboutMan.png"), colour(0,0,0,0.5)
     infobutton bounds(100, 70, 150, 72), file("https://t0nit0rmx.github.io/redir/ToneZAboutM.html"), colour(0,0,0), alpha(0)
     label    bounds(290,100,100,10), text("[[DISCORD CHAT]]")
     image        bounds(260, 70, 150, 72), file("img/AboutDisc.png"), colour(0,0,0,0.5)
     infobutton bounds(260, 70, 150, 72), file("https://t0nit0rmx.github.io/redir/ToneZAboutD.html"), colour(0,0,0), alpha(0)
-    label    bounds(100,180,150,10), text("[[LIKE ON FACEBOOK]]")
-    image        bounds(100, 152, 150, 72), file("img/AboutFB.png"), colour(0,0,0,0.5)
-    infobutton bounds(100, 152, 150, 72), file("https://t0nit0rmx.github.io/redir/ToneZAboutF.html"), colour(0,0,0), alpha(0)
+    label    bounds(100,180,150,10), text("[[DOWNLAOD PRESET PACKS]]")
+    image        bounds(100, 152, 150, 72), file("img/AboutPP.png"), colour(0,0,0,0.5)
+    infobutton bounds(100, 152, 150, 72), file("https://t0nit0rmx.github.io/redir/ToneZAboutPP.html"), colour(0,0,0), alpha(0)
     label    bounds(260,180,150,10), text("[[DONATE ON PAYPAL]]")
     image        bounds(260, 152, 150, 72), file("img/AboutDon.png"), colour(0,0,0,0.5)
     infobutton bounds(260, 152, 150, 72), file("https://t0nit0rmx.github.io/redir/ToneZAboutP.html"), colour(0,0,0), alpha(0)
@@ -534,7 +536,6 @@ groupbox bounds(100, 100, 500, 300), visible(0) , identchannel("GROUP_ABOUT"), p
 
 <CsInstruments>
 
-sr 		= 	44100
 ksmps 		= 	256
 nchnls 		= 	2
 0dbfs		=	1	;MAXIMUM AMPLITUDE
@@ -1330,14 +1331,26 @@ opcode ToneZ,aa,kkkk
         
     ; ENV FILTER
      if (gienv1filter==1) then
+        if gkenv1amt < 0 then
+            gkenv1amt=-gkenv1amt
+            k1inv=-1
+        else
+            k1inv=1
+        endif
         if (gienv1osc1==1) then
-            kenvfilter1 downsamp aenv_1 
+            kenvfilter1 downsamp aenv_1
+            if k1inv == -1 then
+                kenvfilter1=1-kenvfilter1
+            endif 
             kenvfilter1 = ((kenvfilter1 * 128) * gkenv1amt) + gkfilter1cut1
             klimitcut limit kenvfilter1, 0, 127
             kenvfilter1 cpsmidinn klimitcut
         endif
         if (gienv1osc2==1) then
             kenvfilter2 downsamp aenv_1
+            if k1inv == -1 then
+                kenvfilter2=1-kenvfilter2
+            endif
             kenvfilter2 = ((kenvfilter2 * 128) * gkenv1amt) + gkfilter2cut1
             klimitcut limit kenvfilter2, 0, 127
             kenvfilter2 cpsmidinn klimitcut
@@ -1345,14 +1358,26 @@ opcode ToneZ,aa,kkkk
     endif
         
     if (gienv2filter==1) then
+        if gkenv2amt < 0 then
+            gkenv2amt=-gkenv2amt
+            k2inv=-1
+        else
+            k2inv=1
+        endif
         if (gienv2osc1==1) then
             kenvfilter1 downsamp aenv_2
+            if k2inv == -1 then
+                kenvfilter1=1-kenvfilter1
+            endif
             kenvfilter1 = ((kenvfilter1 * 128) * gkenv2amt) + gkfilter1cut1
             klimitcut limit kenvfilter1, 0, 127
             kenvfilter1 cpsmidinn klimitcut
         endif
         if (gienv2osc2==1) then
             kenvfilter2 downsamp aenv_2
+            if k2inv == -1 then
+                kenvfilter2=1-kenvfilter2
+            endif
             kenvfilter2 = ((kenvfilter2 * 128) * gkenv2amt) + gkfilter2cut1
             klimitcut limit kenvfilter2, 0, 127
             kenvfilter2 cpsmidinn klimitcut
@@ -1362,14 +1387,26 @@ opcode ToneZ,aa,kkkk
         
         
     if (gienv3filter==1) then
+        if gkenv3amt < 0 then
+            gkenv3amt=-gkenv3amt
+            k3inv=-1
+        else
+            k3inv=1
+        endif
         if (gienv3osc1==1) then
             kenvfilter1 downsamp aenv_3
+            if k3inv == -1 then
+                kenvfilter1=1-kenvfilter1
+            endif
             kenvfilter1 = ((kenvfilter1 * 128) * gkenv3amt) + gkfilter1cut1
             klimitcut limit kenvfilter1, 0, 127
             kenvfilter1 cpsmidinn klimitcut
         endif
         if (gienv3osc2==1) then
             kenvfilter2 downsamp aenv_3
+            if k3inv == -1 then
+                kenvfilter2=1-kenvfilter2
+            endif
             kenvfilter2 = ((kenvfilter2 * 128) * gkenv3amt) + gkfilter2cut1
             klimitcut limit kenvfilter2, 0, 127
             kenvfilter2 cpsmidinn klimitcut
@@ -1378,14 +1415,26 @@ opcode ToneZ,aa,kkkk
         
         
     if (gienv4filter==1) then
+        if gkenv4amt < 0 then
+            gkenv4amt=-gkenv4amt
+            k4inv=-1
+        else
+            k4inv=1
+        endif
         if (gienv4osc1==1) then
             kenvfilter1 downsamp aenv_4
+            if k4inv == -1 then
+                kenvfilter1=1-kenvfilter1
+            endif
             kenvfilter1 = ((kenvfilter1 * 128) * gkenv4amt) + gkfilter1cut1
             klimitcut limit kenvfilter1, 0, 127
             kenvfilter1 cpsmidinn klimitcut
         endif
         if (gienv4osc2==1) then
             kenvfilter2 downsamp aenv_4
+            if k4inv == -1 then
+                kenvfilter2=1-kenvfilter2
+            endif
             kenvfilter2 = ((kenvfilter2 * 128) * gkenv4amt) + gkfilter2cut1
             klimitcut limit kenvfilter2, 0, 127
             kenvfilter2 cpsmidinn klimitcut
@@ -1714,6 +1763,7 @@ instr	UpdateGUI
     endif
     
     kAbout changed chnget:k("BUTTON_ABOUT")
+    kPanic changed chnget:k("BUTTON_PANIC")
     kClose changed chnget:k("BGCLOSE")
     if kAbout==1 then
 		chnset "visible(1)", "GROUP_ABOUT"
@@ -1725,6 +1775,12 @@ instr	UpdateGUI
 		chnset "visible(0)", "GROUP_BGABOUT" 
 		chnset "visible(0)", "GROUP_BGCLOSE" 
     endif   
+    
+    if kPanic==1 then
+        turnoff2 2,0,0
+        turnoff2 3,0,0
+    endif
+    
     
 	if kTrigOSC==1 then
 		Smessage sprintfk "visible(%d)", chnget:k("OSC1_BUTTON")==1 ? 1 : 0
