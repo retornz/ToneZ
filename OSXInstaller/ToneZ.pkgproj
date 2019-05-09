@@ -79,7 +79,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>/Users/walshr/sourcecode/ToneZ-loca/ToneZ.component</string>
+															<string>/Users/walshr/sourcecode/ToneZ/ToneZ.component</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -107,7 +107,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>Plug-Ins</string>
+											<string>Plug-ins</string>
 											<key>PATH_TYPE</key>
 											<integer>2</integer>
 											<key>PERMISSIONS</key>
@@ -535,7 +535,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ToneZ-AU</string>
+				<string>AU</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -547,12 +547,12 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>1.0</string>
+				<string>1.1.1</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
 			<key>UUID</key>
-			<string>C31ABB04-09FE-4A17-ACA9-67FB4EF10827</string>
+			<string>ECD878ED-105F-4BD8-A981-DB39D37AD59B</string>
 		</dict>
 		<dict>
 			<key>MUST-CLOSE-APPLICATION-ITEMS</key>
@@ -629,7 +629,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>/Users/walshr/sourcecode/ToneZ-loca/ToneZ.vst</string>
+															<string>/Users/walshr/sourcecode/ToneZ/ToneZ.vst</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -657,7 +657,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>Plug-Ins</string>
+											<string>Plug-ins</string>
 											<key>PATH_TYPE</key>
 											<integer>2</integer>
 											<key>PERMISSIONS</key>
@@ -1057,21 +1057,6 @@
 				<key>VERSION</key>
 				<integer>5</integer>
 			</dict>
-			<key>PACKAGE_SCRIPTS</key>
-			<dict>
-				<key>POSTINSTALL_PATH</key>
-				<dict>
-					<key>PATH_TYPE</key>
-					<integer>0</integer>
-				</dict>
-				<key>PREINSTALL_PATH</key>
-				<dict>
-					<key>PATH_TYPE</key>
-					<integer>0</integer>
-				</dict>
-				<key>RESOURCES</key>
-				<array/>
-			</dict>
 			<key>PACKAGE_SETTINGS</key>
 			<dict>
 				<key>AUTHENTICATION</key>
@@ -1085,7 +1070,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>ToneZ-VST</string>
+				<string>VST</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -1097,12 +1082,12 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>1.0</string>
+				<string>1.1</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
 			<key>UUID</key>
-			<string>6EE1AD03-73F1-41A7-9CA3-DA7E845A5FEF</string>
+			<string>B8645CFF-2B41-478F-BCB9-06E6870365EC</string>
 		</dict>
 	</array>
 	<key>PROJECT</key>
@@ -1157,64 +1142,6 @@
 				<integer>2</integer>
 				<key>SHARED_SETTINGS_FOR_ALL_APPAREANCES</key>
 				<true/>
-			</dict>
-			<key>INSTALLATION TYPE</key>
-			<dict>
-				<key>HIERARCHIES</key>
-				<dict>
-					<key>INSTALLER</key>
-					<dict>
-						<key>LIST</key>
-						<array>
-							<dict>
-								<key>CHILDREN</key>
-								<array/>
-								<key>DESCRIPTION</key>
-								<array/>
-								<key>OPTIONS</key>
-								<dict>
-									<key>HIDDEN</key>
-									<false/>
-									<key>STATE</key>
-									<integer>1</integer>
-								</dict>
-								<key>PACKAGE_UUID</key>
-								<string>C31ABB04-09FE-4A17-ACA9-67FB4EF10827</string>
-								<key>TITLE</key>
-								<array/>
-								<key>TYPE</key>
-								<integer>0</integer>
-								<key>UUID</key>
-								<string>B12C8765-E3BE-4EFF-9193-27EDF595E6F3</string>
-							</dict>
-							<dict>
-								<key>CHILDREN</key>
-								<array/>
-								<key>DESCRIPTION</key>
-								<array/>
-								<key>OPTIONS</key>
-								<dict>
-									<key>HIDDEN</key>
-									<false/>
-									<key>STATE</key>
-									<integer>1</integer>
-								</dict>
-								<key>PACKAGE_UUID</key>
-								<string>6EE1AD03-73F1-41A7-9CA3-DA7E845A5FEF</string>
-								<key>TITLE</key>
-								<array/>
-								<key>TYPE</key>
-								<integer>0</integer>
-								<key>UUID</key>
-								<string>00432FBE-4F88-4759-83F5-92281903C27D</string>
-							</dict>
-						</array>
-						<key>REMOVED</key>
-						<dict/>
-					</dict>
-				</dict>
-				<key>MODE</key>
-				<integer>2</integer>
 			</dict>
 			<key>INSTALLATION_STEPS</key>
 			<array>
@@ -1278,17 +1205,7 @@
 			<key>INTRODUCTION</key>
 			<dict>
 				<key>LOCALIZATIONS</key>
-				<array>
-					<dict>
-						<key>LANGUAGE</key>
-						<string>English</string>
-						<key>VALUE</key>
-						<dict>
-							<key>PATH_TYPE</key>
-							<integer>0</integer>
-						</dict>
-					</dict>
-				</array>
+				<array/>
 			</dict>
 			<key>LICENSE</key>
 			<dict>
@@ -1310,7 +1227,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string></string>
+						<string>ToneZ</string>
 					</dict>
 				</array>
 			</dict>
