@@ -3,7 +3,7 @@
 ;****************************************************************************
 ;****************************************************************************
 ;****************************************************************************
-;                           ToneZ v1.2
+;                           ToneZ v1.3
 ;                       T0NIT0 RMX - 2019
 ;                   https://t0nit0rmx.github.io
 ;
@@ -59,15 +59,17 @@ groupbox bounds(560, 0, 172, 407), plant("GUI_HEADER"){
     rslider bounds(75, 75, 75, 43), text("Volume"),    channel("MasterVol"), range(0, 500, 100, 0.43, 0.01), popuppostfix(" %"), $rsliderstyle
     nslider bounds(17, 77, 55, 23),       channel("pbrange"), range(1, 24, 12, 1, 1) , $nsliderstyle
     label bounds(0, 102, 90, 11), text("PB. Range")
-    button  bounds(80, 349, 52, 17), text("OFF", "ON"), channel("monopoly"), $checkboxstyle
-    rslider bounds(15, 347, 47, 43), text("Leg.Time"),    channel("LegTim"), range(1, 5000, 100, 0.25, 1), popuppostfix(" ms"), $rsliderstyle
-    label bounds(77, 375, 40, 11), text("Retrig")
-    checkbox   bounds(120, 375, 10, 10), channel("SARetrig"), , identchannel("SARetrigID"), $checkboxstyle
+    label bounds(15,328,150,15), text("PORTAMENTO"), align("left")
+    button  bounds(120, 326, 30, 17), text("OFF", "ON"), channel("monopoly"), $checkboxstyle
+    rslider bounds(15, 350, 47, 43), text("Leg.Time"),    channel("LegTim"), range(1, 5000, 100, 0.25, 1), popuppostfix(" ms"), $rsliderstyle
+    label bounds(77, 360, 40, 11), text("Retrig")
+    checkbox   bounds(120, 360, 10, 10), channel("SARetrig"), , identchannel("SARetrigID"), $checkboxstyle
+    label bounds(79, 377, 40, 11), text("Glide")
+    checkbox   bounds(120, 377, 10, 10), channel("SAGlide"), $checkboxstyle
     button bounds(0, 0, 160, 70), channel("BUTTON_PANIC"),latched(0), alpha(0)
     button bounds(100, 2, 58, 20), channel("BUTTON_ABOUT") text("About..."),latched(0), $buttonstyle
     
     label bounds(47,127,150,15), text("PRESETS")
-    label bounds(30,328,150,15), text("PORTAMENTO")
     label bounds(50,282,150,15), text("EXPERT")
     label bounds(50,295,150,15), text("DETUNE")
     label bounds(3, 130, 80, 10) text("<No Preset>") identchannel("PresetName")
@@ -310,13 +312,17 @@ groupbox bounds(320, 140, 230, 125), , identchannel("GROUP_LFOALL"), plant("GUI_
         rslider  bounds(55, 64, 20, 20),    channel("lfo1shape_K"),       range(1, 7, 0, 1, 1), $rsliderhiddenstyle
         label    bounds(13,88,50,11), text("Shape")
         rslider  bounds(80, 58, 45, 45),   channel("lfo1gain"),        range(0, 20, 0.5, 0.25, 0.01),   text("Gain"), popuppostfix(" "),  $rsliderstyle
-        rslider  bounds(126, 58, 45, 45),   channel("lfo1rate"),        range(0, 1000, 4, 0.25, 0.01),   text("Rate"), popuppostfix(" Hz")     $rsliderstyle
+        rslider  bounds(126, 58, 45, 45),   channel("lfo1rate"),        range(0, 1000, 4, 0.25, 0.01),   text("Rate"), popuppostfix(" Hz"), identchannel("lfo1rate_i")     $rsliderstyle
+        image        bounds(126, 58, 45, 45), colour(20, 30, 40, 255), channel("lfo1hide") identchannel("lfo1hide_i")
+        rslider  bounds(126, 58, 45, 45),   channel("lfo1mult"), value(0),     range(1, 32, 1, 1, 1),   text("Rate"), popupprefix("1/"), popuppostfix(" Beat"), identchannel("lfo1mult_i")     $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("lfo1amt"),         range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
         button bounds(5, 30, 38, 17),      channel("lfo1osc1"), identchannel("LFO1OSC1_BUTTON"), text("OSC1"),value(1), $checkboxstyle
         button bounds(43, 30, 38, 17),     channel("lfo1osc2"), identchannel("LFO1OSC2_BUTTON"), text("OSC2"),value(1), $checkboxstyle
         button bounds(81, 30, 38, 17),     channel("lfo1osc3"), identchannel("LFO1OSC3_BUTTON"), text("OSC3"),value(1), $checkboxstyle
         button bounds(119, 30, 38, 17),    channel("lfo1osc4"), identchannel("LFO1OSC4_BUTTON"), text("OSC4"),value(1), $checkboxstyle
+        label bounds(150, 34, 70, 10), text("BPM Sync")  
+        checkbox bounds(210, 34, 10, 10), channel("lfo1bpm"), text("BPM Sync"), $checkboxstyle
          
         button bounds(5, 7, 38, 17),     channel("lfo1amp"), text("Amp"), radiogroup(107), value(1), $buttonstyle 
         button bounds(43, 7, 38, 17),     channel("lfo1pitch"), text("Pitch"), radiogroup(107), $buttonstyle 
@@ -330,13 +336,18 @@ groupbox bounds(320, 140, 230, 125), , identchannel("GROUP_LFOALL"), plant("GUI_
         rslider  bounds(55, 64, 20, 20),    channel("lfo2shape_K"),       range(1, 7, 0, 1, 1), $rsliderhiddenstyle
         label    bounds(13,88,50,11), text("Shape")
         rslider  bounds(80, 58, 45, 45),   channel("lfo2gain"),        range(0, 20, 0.5, 0.25, 0.01),   text("Gain"), popuppostfix(" "),  $rsliderstyle
-        rslider  bounds(126, 58, 45, 45),   channel("lfo2rate"),        range(0, 1000, 4, 0.25, 0.01),   text("Rate"), popuppostfix(" Hz"),     $rsliderstyle
+        rslider  bounds(126, 58, 45, 45),   channel("lfo2rate"),        range(0, 1000, 4, 0.25, 0.01),   text("Rate"), popuppostfix(" Hz"), identchannel("lfo2rate_i")     $rsliderstyle
+        image        bounds(126, 58, 45, 45), colour(20, 30, 40, 255), channel("lfo2hide") identchannel("lfo2hide_i")
+        rslider  bounds(126, 58, 45, 45),   channel("lfo2mult"), value(0),     range(1, 32, 1, 1, 1),   text("Rate"), popupprefix("1/"), popuppostfix(" Beat"), identchannel("lfo2mult_i")     $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("lfo2amt"),         range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
         button bounds(5, 30, 38, 17),      channel("lfo2osc1"), identchannel("LFO2OSC1_BUTTON"), text("OSC1"), $checkboxstyle
         button bounds(43, 30, 38, 17),     channel("lfo2osc2"), identchannel("LFO2OSC2_BUTTON"), text("OSC2"), $checkboxstyle
         button bounds(81, 30, 38, 17),     channel("lfo2osc3"), identchannel("LFO2OSC3_BUTTON"), text("OSC3"), $checkboxstyle
         button bounds(119, 30, 38, 17),    channel("lfo2osc4"), identchannel("LFO2OSC4_BUTTON"), text("OSC4"), $checkboxstyle
+        label bounds(150, 34, 70, 10), text("BPM Sync")  
+        checkbox bounds(210, 34, 10, 10), channel("lfo2bpm"), text("BPM Sync"), $checkboxstyle
+        
         button bounds(5, 7, 38, 17),       channel("lfo2amp"), text("Amp"), radiogroup(108), value(1), $buttonstyle 
         button bounds(43, 7, 38, 17),      channel("lfo2pitch"), text("Pitch"), radiogroup(108), $buttonstyle 
         button bounds(81, 7, 38, 17),      channel("lfo2morph"), text("Morph"), radiogroup(108), $buttonstyle  
@@ -458,12 +469,13 @@ groupbox bounds(5, 275, 545, 115), , identchannel("GROUP_EFFECTALL"), plant("GUI
         button  bounds(500, 5, 40, 20), text("OFF", "ON"), channel("revswitch"), $checkboxstyle
         button bounds(22, 33, 30, 30), text("L","H"), channel("revtype"), popuppostfix(" "), $checkboxstyle
         label    bounds(12,65,50,11), text("Type")
-        rslider bounds(70, 30, 50, 50), text("Size"), channel("revsize"), 	range(0, 100.00,85), popuppostfix(" %"), $rsliderstyle
+        rslider bounds(65, 30, 50, 50), text("Size"), channel("revsize"), 	range(0, 100.00,85), popuppostfix(" %"), $rsliderstyle
         rslider bounds(115, 30, 50, 50), text("Pre-del."), channel("revdel"), 	range(0, 1000, 0, 0.25, 1), popuppostfix(" ms"), $rsliderstyle
         rslider bounds(165, 30, 50, 50), text("Damping"), channel("revdamp"), 	range(0, 20000, 10000, 0.5, 0.01), popuppostfix(" Hz"), $rsliderstyle
-        rslider bounds(220, 30, 50, 50), text("Pitch Mod."), channel("revpitchmod"), range(0, 20.0, 1), identchannel("REVPITCHMOD_BUTTON"), popuppostfix(" "), $rsliderstyle
-        rslider bounds(280, 30, 50, 50), text("LPF"), channel("revCutLPF"), range(0, 20000, 20000, 0.5), popuppostfix(" Hz"), $rsliderstyle
-        rslider bounds(320, 30, 50, 50), text("HPF"), channel("revCutHPF"), range(0, 20000, 200, 0.5), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(215, 30, 50, 50), text("Pitch Mod."), channel("revpitchmod"), range(0, 20.0, 1), identchannel("REVPITCHMOD_BUTTON"), popuppostfix(" "), $rsliderstyle
+        rslider bounds(265, 30, 60, 50), text("Width Red."), channel("revwred"), range(0, 100.0, 0), popuppostfix(" %"), $rsliderstyle
+        rslider bounds(330, 30, 50, 50), text("LPF"), channel("revCutLPF"), range(0, 20000, 20000, 0.5), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(370, 30, 50, 50), text("HPF"), channel("revCutHPF"), range(0, 20000, 200, 0.5), popuppostfix(" Hz"), $rsliderstyle
         rslider bounds(485, 40, 45, 45), range(0, 100, 15, 1, 0.01), channel("drywetrev"), text("Dry/Wet"), popuppostfix(" %"), $rsliderstyle
         rslider bounds(440, 40, 45, 45), range(0, 100.0, 100), channel("revlevel"), text("Volume"), popuppostfix(" %"), $rsliderstyle
     }
@@ -496,8 +508,8 @@ button bounds(0, 0, 719, 468), visible(0), colour(0,0,0), alpha(0), identchannel
 ;ABOUT TAB
 groupbox bounds(100, 100, 500, 300), visible(0) , identchannel("GROUP_ABOUT"), plant("GUI_ABOUT"){
     image    bounds(0, 0, 500, 300), colour(20, 30, 40, 255)
-    label    bounds(0,20,500,20), text("ToneZ by T0NIT0 RMX - v1.2")
-    infobutton bounds(400, 18, 100, 23), text("Check for updates"), file("https://t0nit0rmx.github.io/utils/tonez_uc?v=1.2"), latched(0), $buttonstyle
+    label    bounds(0,20,500,20), text("ToneZ by T0NIT0 RMX - v1.3")
+    infobutton bounds(400, 18, 100, 23), text("Check for updates"), file("https://t0nit0rmx.github.io/utils/tonez_uc?v=1.3"), latched(0), $buttonstyle
     label    bounds(130,100,100,10), text("[[USER MANUAL]]")
     image        bounds(100, 70, 150, 72), file("img/AboutMan.png"), colour(0,0,0,0.5)
     infobutton bounds(100, 70, 150, 72), file("https://t0nit0rmx.github.io/redir/ToneZAboutM.html"), colour(0,0,0), alpha(0)
@@ -543,7 +555,8 @@ seed	0
 massign	0,2
 
 
-
+gkoldnum init 0
+gknum init 0
 
 gkactive	init	0
 
@@ -690,7 +703,12 @@ opcode SuperOsc2, aa, akikkkkkkikkkkk
         idiff2 chnget "detsh2"
         idiff3 chnget "detsh3"
         idiff4 chnget "detsh4"
+        
+        
+       
         gkDT[] fillarray -.30/8-idiff4, .30/8+idiff4, -.30/5-idiff3, .30/5+idiff3, -.30/3-idiff2, .30/3+idiff2, -.30/2-idiff1, .30/2+idiff1
+            
+       
         gkP[] fillarray -.5, .5, .5, -.5, -.5, .5, .5, -.5
         kD[] = gkDT*kDet/100 + 1
         kW[] = gkP*kWid/100 + 0.5
@@ -843,10 +861,15 @@ opcode MultiFilter, aa, aaakkkkkkkkk
 endop
 
 
-opcode	fastLFO,k,kkk
-    kshape, kgain, krate xin
+opcode	fastLFO,k,kkkkk
+    kshape, kgain, krate, kmult, ksync xin
     if kshape>1 then    
-        setksmps 1
+        setksmps 16
+        if ksync == 1 then
+            krate	chnget	"HOST_BPM"
+            krate = (krate/60)*kmult
+        endif
+        
         if kshape==2 then
             klfo lfo kgain, krate, 0
         elseif kshape==3 then
@@ -1054,12 +1077,16 @@ opcode ToneZ,aa,kkkk
     gklfo1shape chnget "lfo1shape_B"
     gklfo1gain chnget "lfo1gain"
     gklfo1rate chnget "lfo1rate"
+    gklfo1mult chnget "lfo1mult"
+    gklfo1bpm chnget "lfo1bpm"
     gklfo1amt chnget "lfo1amt"
     gklfo1amt/=100
     
     gklfo2shape chnget "lfo2shape_B"
     gklfo2gain chnget "lfo2gain"
     gklfo2rate chnget "lfo2rate"
+    gklfo2mult chnget "lfo2mult"
+    gklfo2bpm chnget "lfo2bpm"
     gklfo2amt chnget "lfo2amt"
     gklfo2amt/=100 
       
@@ -1143,15 +1170,25 @@ opcode ToneZ,aa,kkkk
     
     rireturn
 	
-    klfo1 fastLFO gklfo1shape, gklfo1gain, gklfo1rate
-    klfo2 fastLFO gklfo2shape, gklfo2gain, gklfo2rate
+	if gklfo1shape != 1 then
+        klfo1 fastLFO gklfo1shape, gklfo1gain, gklfo1rate, gklfo1mult, gklfo1bpm
+    else
+        klfo1 = 1
+    endif
+    if gklfo2shape != 1 then
+        klfo2 fastLFO gklfo2shape, gklfo2gain, gklfo2rate, gklfo2mult, gklfo2bpm
+    else
+        klfo2 = 1
+    endif
     
-    ; ENV AMP
-    kosc1envamp = 1
-    kosc2envamp = 1
-    kosc3envamp = 1
-    kosc4envamp = 1
-        
+    
+    
+    ;ENV : AMP
+    aosc1envamp init 0
+    aosc2envamp init 0
+    aosc3envamp init 0
+    aosc4envamp init 0
+    
     if (gienv1amp==1) then
         if (gienv1osc1==1) then
             aosc1envamp = aenv_1+(1*(1-gkenv1amt))
@@ -1211,44 +1248,141 @@ opcode ToneZ,aa,kkkk
             aosc4envamp = aenv_4+(1*(1-gkenv4amt))
         endif
     endif
+    
+    
+    ;ENV : PITCH
+    kosc1pitch = knum
+    kosc2pitch = knum
+    kosc3pitch = knum
+    kosc4pitch = knum
+    
+    if (gienv2pitch==1) then
+        if (gienv2osc1==1) then
+            kosc1pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
+        endif
+        if (gienv2osc2==1) then
+            kosc2pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
+        endif
+        if (gienv2osc3==1) then
+            kosc3pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
+        endif
+        if (gienv2osc4==1) then
+            kosc4pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
+        endif
+    endif
         
-
-    ;OSC MORPH LFO
-    
-    if (gilfo1morph==1) then
-        if (gklfo1osc1==1) then
-            gkosc1morph =gkosc1morph +(klfo1*gklfo1amt*10)
+    if (gienv3pitch==1) then
+        if (gienv3osc1==1) then
+            kosc1pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
         endif
-        if (gklfo1osc2==1) then
-            gkosc2morph =gkosc2morph +(klfo1*gklfo1amt*10)
+        if (gienv3osc2==1) then
+            kosc2pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
         endif
-        if (gklfo1osc3==1) then
-            gkosc3morph =gkosc3morph +(klfo1*gklfo1amt*10)
+        if (gienv3osc3==1) then
+            kosc3pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
         endif
-        if (gklfo1osc4==1) then
-            gkosc4morph =gkosc4morph +(klfo1*gklfo1amt*10)
+        if (gienv3osc4==1) then
+            kosc4pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
         endif
     endif
-    if (gilfo2morph==1) then
-        if (gklfo2osc1==1) then
-            gkosc1morph =gkosc1morph +(klfo2*gklfo2amt*10)
+        
+    if (gienv4pitch==1) then
+        if (gienv4osc1==1) then
+            kosc1pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
         endif
-        if (gklfo2osc2==1) then
-            gkosc2morph =gkosc2morph +(klfo2*gklfo2amt*10)
+        if (gienv4osc2==1) then
+            kosc2pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
         endif
-        if (gklfo2osc3==1) then
-            gkosc3morph =gkosc3morph +(klfo2*gklfo2amt*10)
+        if (gienv4osc3==1) then
+            kosc3pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
         endif
-        if (gklfo2osc4==1) then
-            gkosc4morph =gkosc4morph +(klfo2*gklfo2amt*10)
+        if (gienv4osc4==1) then
+            kosc4pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
         endif
     endif
     
     
-        ;FILTER DEFAULT (NO ENV)
+    ;ENV : MORPH
+    gkosc1morph init 0
+    gkosc2morph init 0
+    gkosc3morph init 0
+    gkosc4morph init 0
+            
+    if (gienv1morph==1) then
+        if (gienv1osc1==1) then
+            gkosc1morph = gkosc1morph + gkenv1amt*100*downsamp(aenv_1)
+        endif
+        if (gienv1osc2==1) then
+            gkosc2morph = gkosc2morph + gkenv1amt*100*downsamp(aenv_1)
+        endif
+        if (gienv1osc3==1) then
+            gkosc3morph = gkosc3morph + gkenv1amt*100*downsamp(aenv_1)
+        endif
+        if (gienv1osc4==1) then
+            gkosc4morph = gkosc4morph + gkenv1amt*100*downsamp(aenv_1)
+        endif
+    endif
+    if (gienv2morph==1) then
+        if (gienv2osc1==1) then
+            gkosc1morph = gkosc1morph + gkenv2amt*100*downsamp(aenv_2)
+        endif
+        if (gienv2osc2==1) then
+            gkosc2morph = gkosc2morph + gkenv2amt*100*downsamp(aenv_2)
+        endif
+        if (gienv2osc3==1) then
+            gkosc3morph = gkosc3morph + gkenv2amt*100*downsamp(aenv_2)
+        endif
+        if (gienv2osc4==1) then
+            gkosc4morph = gkosc4morph + gkenv2amt*100*downsamp(aenv_2)
+        endif
+    endif
+    if (gienv3morph==1) then
+        if (gienv3osc1==1) then
+            gkosc1morph = gkosc1morph + gkenv3amt*100*downsamp(aenv_3)
+        endif
+        if (gienv3osc2==1) then
+            gkosc2morph = gkosc2morph + gkenv3amt*100*downsamp(aenv_3)
+        endif
+        if (gienv3osc3==1) then
+            gkosc3morph = gkosc3morph + gkenv3amt*100*downsamp(aenv_3)
+        endif
+        if (gienv3osc4==1) then
+            gkosc4morph = gkosc4morph + gkenv3amt*100*downsamp(aenv_3)
+        endif
+    endif
+    if (gienv4morph==1) then
+        if (gienv4osc1==1) then
+            gkosc1morph = gkosc1morph + gkenv4amt*100*downsamp(aenv_4)
+        endif
+        if (gienv4osc2==1) then
+            gkosc2morph = gkosc2morph + gkenv4amt*100*downsamp(aenv_4)
+        endif
+        if (gienv4osc3==1) then
+            gkosc3morph = gkosc3morph + gkenv4amt*100*downsamp(aenv_4)
+        endif
+        if (gienv4osc4==1) then
+            gkosc4morph = gkosc4morph + gkenv4amt*100*downsamp(aenv_4)
+        endif
+    endif
+       
+    if (gienv1pitch==1) then
+        if (gienv1osc1==1) then
+            kosc1pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
+        endif
+        if (gienv1osc2==1) then
+            kosc2pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
+        endif
+        if (gienv1osc3==1) then
+            kosc3pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
+        endif
+        if (gienv1osc4==1) then
+            kosc4pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
+        endif
+    endif    
     
     
     
+    ;FILTER ROUTING + LFO : FILTER
     if (gilfo1filter==1) then
         if (gklfo1osc1==1) then
             gkfilter1cut1=gkfilter1cut1+(klfo1*gklfo1amt*10)
@@ -1329,7 +1463,7 @@ opcode ToneZ,aa,kkkk
         
  
         
-    ; ENV FILTER
+    ;ENV : FILTER
      if (gienv1filter==1) then
         if gkenv1amt < 0 then
             gkenv1amt=-gkenv1amt
@@ -1441,141 +1575,40 @@ opcode ToneZ,aa,kkkk
         endif
     endif
         
+          
+    ;LFO : AMP
+    if (gilfo1amp==1) then
+        if (gklfo1osc1==1) then
+            gkosc1vol=gkosc1vol+(klfo1*gklfo1amt*gkosc1vol)
+        endif
+        if (gklfo1osc2==1) then
+            gkosc2vol=gkosc2vol+(klfo1*gklfo1amt*gkosc2vol)
+        endif
+        if (gklfo1osc3==1) then
+            gkosc3vol=gkosc3vol+(klfo1*gklfo1amt*gkosc3vol)
+        endif
+        if (gklfo1osc4==1) then
+            gkosc4vol=gkosc4vol+(klfo1*gklfo1amt*gkosc4vol)
+        endif
+    endif
         
-        
-    ;ENV MORPH    
-    
-    
-    if (gienv1morph==1) then
-        if (gienv1osc1==1) then
-            gkosc1morph = gkosc1morph + gkenv1amt*100*downsamp(aenv_1)
+    if (gilfo2amp==1) then
+        if (gklfo2osc1==1) then
+            gkosc1vol=gkosc1vol+(klfo2*gklfo2amt*gkosc1vol)
         endif
-        if (gienv1osc2==1) then
-            gkosc2morph = gkosc2morph + gkenv1amt*100*downsamp(aenv_1)
+        if (gklfo2osc2==1) then
+            gkosc2vol=gkosc2vol+(klfo2*gklfo2amt*gkosc2vol)
         endif
-        if (gienv1osc3==1) then
-            gkosc3morph = gkosc3morph + gkenv1amt*100*downsamp(aenv_1)
+        if (gklfo2osc3==1) then
+            gkosc3vol=gkosc3vol+(klfo2*gklfo2amt*gkosc3vol)
         endif
-        if (gienv1osc4==1) then
-            gkosc4morph = gkosc4morph + gkenv1amt*100*downsamp(aenv_1)
-        endif
-    endif
-    if (gienv2morph==1) then
-        if (gienv2osc1==1) then
-            gkosc1morph = gkosc1morph + gkenv2amt*100*downsamp(aenv_2)
-        endif
-        if (gienv2osc2==1) then
-            gkosc2morph = gkosc2morph + gkenv2amt*100*downsamp(aenv_2)
-        endif
-        if (gienv2osc3==1) then
-            gkosc3morph = gkosc3morph + gkenv2amt*100*downsamp(aenv_2)
-        endif
-        if (gienv2osc4==1) then
-            gkosc4morph = gkosc4morph + gkenv2amt*100*downsamp(aenv_2)
-        endif
-    endif
-    if (gienv3morph==1) then
-        if (gienv3osc1==1) then
-            gkosc1morph = gkosc1morph + gkenv3amt*100*downsamp(aenv_3)
-        endif
-        if (gienv3osc2==1) then
-            gkosc2morph = gkosc2morph + gkenv3amt*100*downsamp(aenv_3)
-        endif
-        if (gienv3osc3==1) then
-            gkosc3morph = gkosc3morph + gkenv3amt*100*downsamp(aenv_3)
-        endif
-        if (gienv3osc4==1) then
-            gkosc4morph = gkosc4morph + gkenv3amt*100*downsamp(aenv_3)
-        endif
-    endif
-    if (gienv4morph==1) then
-        if (gienv4osc1==1) then
-            gkosc1morph = gkosc1morph + gkenv4amt*100*downsamp(aenv_4)
-        endif
-        if (gienv4osc2==1) then
-            gkosc2morph = gkosc2morph + gkenv4amt*100*downsamp(aenv_4)
-        endif
-        if (gienv4osc3==1) then
-            gkosc3morph = gkosc3morph + gkenv4amt*100*downsamp(aenv_4)
-        endif
-        if (gienv4osc4==1) then
-            gkosc4morph = gkosc4morph + gkenv4amt*100*downsamp(aenv_4)
-        endif
-    endif
-       
-    if (gienv1pitch==1) then
-        if (gienv1osc1==1) then
-            kosc1pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
-        endif
-        if (gienv1osc2==1) then
-            kosc2pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
-        endif
-        if (gienv1osc3==1) then
-            kosc3pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
-        endif
-        if (gienv1osc4==1) then
-            kosc4pitch = knum+3.035*gkenv1amt*knum*downsamp(aenv_1)
+        if (gklfo2osc4==1) then
+            gkosc4vol=gkosc4vol+(klfo2*gklfo2amt*gkosc4vol)
         endif
     endif    
+   
         
-        
-        
-    ; ENV PITCH
-        
-    kosc1pitch = knum
-    kosc2pitch = knum
-    kosc3pitch = knum
-    kosc4pitch = knum
-    
-    
-        
-        
-    if (gienv2pitch==1) then
-        if (gienv2osc1==1) then
-            kosc1pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
-        endif
-        if (gienv2osc2==1) then
-            kosc2pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
-        endif
-        if (gienv2osc3==1) then
-            kosc3pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
-        endif
-        if (gienv2osc4==1) then
-            kosc4pitch = knum+3.035*gkenv2amt*knum*downsamp(aenv_2)
-        endif
-    endif
-        
-    if (gienv3pitch==1) then
-        if (gienv3osc1==1) then
-            kosc1pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
-        endif
-        if (gienv3osc2==1) then
-            kosc2pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
-        endif
-        if (gienv3osc3==1) then
-            kosc3pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
-        endif
-        if (gienv3osc4==1) then
-            kosc4pitch = knum+3.035*gkenv3amt*knum*downsamp(aenv_3)
-        endif
-    endif
-        
-    if (gienv4pitch==1) then
-        if (gienv4osc1==1) then
-            kosc1pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
-        endif
-        if (gienv4osc2==1) then
-            kosc2pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
-        endif
-        if (gienv4osc3==1) then
-            kosc3pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
-        endif
-        if (gienv4osc4==1) then
-            kosc4pitch = knum+3.035*gkenv4amt*knum*downsamp(aenv_4)
-        endif
-    endif
-        
-    ;LFO
+    ;LFO : PITCH
     if (gilfo1pitch==1) then
         if (gklfo1osc1==1) then
             kosc1pitch=kosc1pitch+(klfo1*gklfo1amt)
@@ -1606,36 +1639,37 @@ opcode ToneZ,aa,kkkk
         endif
     endif
         
-    if (gilfo1amp==1) then
+    
+    ;LFO : MORPH    
+    if (gilfo1morph==1) then
         if (gklfo1osc1==1) then
-            gkosc1vol=gkosc1vol+(klfo1*gklfo1amt*gkosc1vol)
+            gkosc1morph =gkosc1morph +(klfo1*gklfo1amt*10)
         endif
         if (gklfo1osc2==1) then
-            gkosc2vol=gkosc2vol+(klfo1*gklfo1amt*gkosc2vol)
+            gkosc2morph =gkosc2morph +(klfo1*gklfo1amt*10)
         endif
         if (gklfo1osc3==1) then
-            gkosc3vol=gkosc3vol+(klfo1*gklfo1amt*gkosc3vol)
+            gkosc3morph =gkosc3morph +(klfo1*gklfo1amt*10)
         endif
         if (gklfo1osc4==1) then
-            gkosc4vol=gkosc4vol+(klfo1*gklfo1amt*gkosc4vol)
-        endif
-    endif
-        
-    if (gilfo2amp==1) then
-        if (gklfo2osc1==1) then
-            gkosc1vol=gkosc1vol+(klfo2*gklfo2amt*gkosc1vol)
-        endif
-        if (gklfo2osc2==1) then
-            gkosc2vol=gkosc2vol+(klfo2*gklfo2amt*gkosc2vol)
-        endif
-        if (gklfo2osc3==1) then
-            gkosc3vol=gkosc3vol+(klfo2*gklfo2amt*gkosc3vol)
-        endif
-        if (gklfo2osc4==1) then
-            gkosc4vol=gkosc4vol+(klfo2*gklfo2amt*gkosc4vol)
+            gkosc4morph =gkosc4morph +(klfo1*gklfo1amt*10)
         endif
     endif
     
+    if (gilfo2morph==1) then
+        if (gklfo2osc1==1) then
+            gkosc1morph =gkosc1morph +(klfo2*gklfo2amt*10)
+        endif
+        if (gklfo2osc2==1) then
+            gkosc2morph =gkosc2morph +(klfo2*gklfo2amt*10)
+        endif
+        if (gklfo2osc3==1) then
+            gkosc3morph =gkosc3morph +(klfo2*gklfo2amt*10)
+        endif
+        if (gklfo2osc4==1) then
+            gkosc4morph =gkosc4morph +(klfo2*gklfo2amt*10)
+        endif
+    endif    
         
 
     kvoicechange changed chnget:k("osc1voice"), chnget:k("osc2voice"), chnget:k("osc3voice"), chnget:k("osc4voice")
@@ -1668,17 +1702,10 @@ opcode ToneZ,aa,kkkk
     a4fl=a4l
     a4fr=a4r 
         
-
     aenvfilter1 interp kenvfilter1
-    
-
-    aenvfilter2 interp kenvfilter2
-    
+    aenvfilter2 interp kenvfilter2 
     kpitch=knum
-    
-   
-                  
-                                
+                            
     if (gkfilter1osc1==1 && (gkfilter1mode1 != 0 || gkfilter1mode2 != 0)) then
         a1l, a1r MultiFilter a1l, a1r, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
     endif
@@ -1716,20 +1743,23 @@ endop
 
 
 
-
-
-
-
-
-
-
 ;##########################################################################################################################################
 
 instr	UpdateGUI
 
+    
+    
+    kplay chnget "IS_PLAYING"
+
+    if changed:k(kplay)==1 then 
+        gkoldnum = 0
+        gknum = 0
+    endif 
+
     kTrigOSC changed chnget:k("OSC1_BUTTON"), chnget:k("OSC2_BUTTON"), chnget:k("OSC3_BUTTON"), chnget:k("OSC4_BUTTON") 
     kTrigENV changed chnget:k("ENV1_BUTTON"), chnget:k("ENV2_BUTTON"), chnget:k("ENV3_BUTTON"), chnget:k("ENV4_BUTTON")
     kTrigLFO changed chnget:k("LFO1_BUTTON"), chnget:k("LFO2_BUTTON")
+    kTrigLFOsync changed chnget:k("lfo1bpm"), chnget:k("lfo2bpm")
     kTrigOSCMODEENV changed chnget:k("env1amp"), chnget:k("env1pitch"), chnget:k("env1morph"), chnget:k("env1filter"), chnget:k("env2amp"), chnget:k("env2pitch"), chnget:k("env2morph"), chnget:k("env2filter"), chnget:k("env3amp"), chnget:k("env3pitch"), chnget:k("env3morph"), chnget:k("env3filter"), chnget:k("env4amp"), chnget:k("env4pitch"), chnget:k("env4morph"), chnget:k("env4filter")
     kTrigOSCMODELFO changed chnget:k("lfo1amp"), chnget:k("lfo1pitch"), chnget:k("lfo1filter"), chnget:k("lfo2amp"), chnget:k("lfo2pitch"), chnget:k("lfo2filter")
     kTrigFILTER changed chnget:k("FILTER1_BUTTON"), chnget:k("FILTER2_BUTTON")
@@ -1810,6 +1840,21 @@ instr	UpdateGUI
 		Smessage sprintfk "visible(%d)", chnget:k("LFO2_BUTTON")==1 ? 1 : 0
 		chnset Smessage, "GROUP_LFO2"
 	endif
+
+
+    if kTrigLFOsync==1 then
+        Smessage sprintfk "visible(%d)", chnget:k("lfo1bpm")==1 ? 1 : 0
+		chnset Smessage, "lfo1mult_i"
+		Smessage sprintfk "visible(%d)", chnget:k("lfo1bpm")==1 ? 1 : 0
+		chnset Smessage, "lfo1hide_i"
+		Smessage sprintfk "visible(%d)", chnget:k("lfo2bpm")==1 ? 1 : 0
+		chnset Smessage, "lfo2mult_i"
+		Smessage sprintfk "visible(%d)", chnget:k("lfo2bpm")==1 ? 1 : 0
+		chnset Smessage, "lfo2hide_i"
+    endif
+    
+    
+    
 
     if kTrigOSCMODEENV==1 then
 		
@@ -2216,12 +2261,16 @@ gkmonopoly	chnget	"monopoly"
     gklfo1shape chnget "lfo1shape_B"
     gklfo1gain chnget "lfo1gain"
     gklfo1rate chnget "lfo1rate"
+    gklfo1mult chnget "lfo1mult"
+    gklfo1bpm chnget "lfo1bpm"
     gklfo1amt chnget "lfo1amt"
     gklfo1amt/=100
     
     gklfo2shape chnget "lfo2shape_B"
     gklfo2gain chnget "lfo2gain"
     gklfo2rate chnget "lfo2rate"
+    gklfo2mult chnget "lfo2mult"
+    gklfo2bpm chnget "lfo2bpm"
     gklfo2amt chnget "lfo2amt"
     gklfo2amt/=100 
       
@@ -2255,6 +2304,8 @@ gkmonopoly	chnget	"monopoly"
     gkenv4s chnget "env4s"
     gkenv4r chnget "env4r"
 
+    gkGlide chnget "SAGlide"
+    
 
     if changed:k(chnget:S("saveFile")) == 1 then
         gSFileName chnget "saveFile"
@@ -2310,6 +2361,7 @@ instr	2	;triggered via MIDI
     chnmix asumr, "outputR"
 
     else				;otherwise... (i.e. legato mode)
+        
         iactive	=	i(gkactive)			;number of active notes of instr 3 (note in release are disregarded)
         if iactive==0 then					;...if no notes are active
             event_i	"i",p1+1,0,-1				;...start a new held note
@@ -2327,14 +2379,20 @@ instr	3	;waveguide instrument. MIDI notes are directed here.
     krel	release					;sense when  note has been released
     gkactive	=	1-krel			;if note is in release, gkactive=0, otherwise =1
 
-    knum	SsplinePort	gknum,kporttime,2,0	;GLISSANDO TIME PROPORTIONAL TO NOTE GAP (OPTION SET TO '1'), THEREFORE PORTAMENTO TIME DEPENDENT UPON NOTE GAP. LARGER INTERVALS WILL RESULT IN PROPORTIONALLY LONGER PORTAMENTO TIMES.
+
+    iold = i(gkoldnum)
+    if gkGlide==1 && iold!=0 then
+        knum	SsplinePort	gkoldnum,kporttime,2,0	;GLISSANDO TIME PROPORTIONAL TO NOTE GAP (OPTION SET TO '1'), THEREFORE PORTAMENTO TIME DEPENDENT UPON NOTE GAP. LARGER INTERVALS WILL RESULT IN PROPORTIONALLY LONGER PORTAMENTO TIMES.
+	else
+	    knum	SsplinePort	gknum,kporttime,2,0
+	    
+	endif
+	gkoldnum = gknum
 	
     kactive	active	p1-1			;...check number of active midi notes (previous instrument)
     if kactive==0 then				;if no midi notes are active...
         turnoff					;... turn this instrument off
     endif
-    
-    ;gkNoteTrig changed knum
     
     ivel	init	givel
     kvel = ivel
@@ -2342,11 +2400,14 @@ instr	3	;waveguide instrument. MIDI notes are directed here.
 
     asuml,asumr ToneZ knum,kvel,gkpb, gkNoteTrig 
           
- 
+    
     chnmix asuml, "outputL"
     chnmix asumr, "outputR"
 endin
 
+instr 6
+    schedule 4005, 0.1, 1
+endin
 
 instr EFFECT
     asuml chnget "outputL"
@@ -2460,9 +2521,11 @@ instr EFFECT
         krevsize		chnget	"revsize"
         krevdamp		chnget	"revdamp"
         krevpitchmod   chnget	"revpitchmod"
+	    krevwred chnget "revwred"
 	
         krevCutLPF     chnget  "revCutLPF"
         krevCutHPF     chnget  "revCutHPF"
+        
         krevlevel     chnget  "revlevel"
         krevdel chnget "revdel"
         arevdel = krevdel
@@ -2498,6 +2561,11 @@ instr EFFECT
         kdrywetrev = 0
     endif
     
+    
+    arvbL = arvbL + (arvbR*(krevwred/100))
+    arvbR = arvbR + (arvbL*(krevwred/100))
+    
+
 	amixrevL ntrpol		amixeqL, arvbL*krevlevel/100, kdrywetrev/100	
 	amixrevR ntrpol		amixeqR, arvbR*krevlevel/100, kdrywetrev/100 
     denorm amixrevL,amixrevR
@@ -2877,13 +2945,18 @@ instr 1002 ;restore presets
         chnset i4, "env4morph"
         chnset i5, "lfo1morph"
         chnset i6, "lfo2morph"
-        i1, i2, i3, i4 init 0
-        fini gSFileName, 0, 1, i1, i2, i3, i4
+        i1, i2, i3, i4, i5, i6, i7, i8, i9, i10 init 0
+        fini gSFileName, 0, 1, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10
         chnset i1, "env1slope"
         chnset i2, "env2slope"
         chnset i3, "env3slope"
         chnset i4, "env4slope"
-        
+        chnset i5, "SAGlide"
+        chnset i6, "revwred"
+        chnset i7, "lfo1mult"
+        chnset i8, "lfo2mult"
+        chnset i9, "lfo1bpm"
+        chnset i10, "lfo2bpm"
         
         ;///////LMMS FIX///////////
         ktemp chnget "osc1wave1_B"
@@ -2991,7 +3064,7 @@ instr 1003 ;save presets
     fprints gSFileName, "%f %f %f %f %f %f ", chnget:i("EFFECT1_BUTTON"), chnget:i("EFFECT2_BUTTON"), chnget:i("EFFECT3_BUTTON"), chnget:i("EFFECT4_BUTTON"), chnget:i("EFFECT5_BUTTON"), chnget:i("EFFECT6_BUTTON")
     fprints gSFileName, "%f %f %f %f %f %f %f %f ", chnget:i("detsh1"), chnget:i("detsh2"), chnget:i("detsh3"), chnget:i("detsh4"), chnget:i("MasterVol"), chnget:i("revdel"), chnget:i("distbitcrusher"), chnget:i("distfoldover")
     fprints gSFileName, "%f %f %f %f %f %f ", chnget:i("env1morph"), chnget:i("env2morph"), chnget:i("env3morph"), chnget:i("env4morph"), chnget:i("lfo1morph"), chnget:i("lfo2morph")
-    fprints gSFileName, "%f %f %f %f ", chnget:i("env1slope"), chnget:i("env2slope"), chnget:i("env3slope"), chnget:i("env4slope")
+    fprints gSFileName, "%f %f %f %f %f %f %f %f %f %f ", chnget:i("env1slope"), chnget:i("env2slope"), chnget:i("env3slope"), chnget:i("env4slope"), chnget:i("SAGlide"), chnget:i("revwred"), chnget:i("lfo1mult"), chnget:i("lfo2mult"), chnget:i("lfo1bpm"), chnget:i("lfo2bpm")
     ficlose gSFileName
     
     ires strindex gSFileName, "dummy"
@@ -3032,19 +3105,18 @@ instr 1004
 endin
 
 
-
-
-instr TEST
+instr 4005
     Spreset chnget "PresetString"
 Smes sprintf "text(\"%s\")",Spreset 
 chnset Smes,"PresetName"
+turnoff
 endin
 
 </CsInstruments>
 <CsScore>
 i 1  0 [3600*24*7] ;read var stored in instr1
+i 6 0 1
 i"EFFECT" 0 z
-i"TEST" 0.1 1
 f0 z
 </CsScore>
 </CsoundSynthesizer>
