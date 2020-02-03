@@ -219,7 +219,7 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         label    bounds(172,4,50,20), text("ENV1")
         rslider  bounds(0, 58, 45, 45),    channel("env1a"),        range(0.007, 10, 0.001, 0.5, 0.001),   text("A"), popuppostfix(" s"),    $rsliderstyle
         rslider  bounds(38, 58, 45, 45),   channel("env1d"),        range(0, 10, 0, 0.5, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env1s"),        range(0.001, 1, 1, 1, 0.001),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env1s"),        range(0.0000000001, 1, 1, 0.6, 0.0000000001),   text("S"), popuppostfix(" "),     $rsliderstyle
         rslider  bounds(114, 58, 45, 45),   channel("env1r"),        range(0.007, 10, 0.001, 0.5, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env1amt"), identchannel("ENV1AMT_BUTTON"),   range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
@@ -238,7 +238,7 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         label    bounds(172,4,50,20), text("ENV2")
         rslider  bounds(0, 58, 45, 45),    channel("env2a"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("A"), popuppostfix(" s"),   $rsliderstyle
         rslider  bounds(38, 58, 45, 45),   channel("env2d"),        range(0, 10, 0, 0.5, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env2s"),        range(0.001, 1, 0.001, 0.5, 0.01),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env2s"),        range(0.0000000001, 1, 1, 0.6, 0.0000000001),   text("S"), popuppostfix(" "),     $rsliderstyle
         rslider  bounds(114, 58, 45, 45),   channel("env2r"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env2amt"), identchannel("ENV2AMT_BUTTON"),   range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
@@ -257,7 +257,7 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         label    bounds(172,4,50,20), text("ENV3")
         rslider  bounds(0, 58, 45, 45),    channel("env3a"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("A"), popuppostfix(" s"),   $rsliderstyle
         rslider  bounds(38, 58, 45, 45),   channel("env3d"),        range(0, 10, 0, 0.5, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env3s"),        range(0.001, 1, 0.001, 0.5, 0.01),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env3s"),        range(0.0000000001, 1, 1, 0.6, 0.0000000001),   text("S"), popuppostfix(" "),     $rsliderstyle
         rslider  bounds(114, 58, 45, 45),   channel("env3r"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env3amt"), identchannel("ENV3AMT_BUTTON"),  range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
@@ -276,7 +276,7 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         label    bounds(172,4,50,20), text("ENV4")
         rslider  bounds(0, 58, 45, 45),    channel("env4a"),        range(0.001, 10, 0.001, 0.25, 0.001),   text("A"), popuppostfix(" s"),   $rsliderstyle
         rslider  bounds(38, 58, 45, 45),   channel("env4d"),        range(0, 10, 0, 0.25, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env4s"),        range(0.001, 1, 0.001, 0.5, 0.01),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env4s"),        range(0.0000000001, 1, 1, 0.6, 0.0000000001),   text("S"), popuppostfix(" "),     $rsliderstyle
         rslider  bounds(114, 58, 45, 45),   channel("env4r"),        range(0.001, 10, 0.001, 0.25, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env4amt"), identchannel("ENV4AMT_BUTTON"),   range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
@@ -371,13 +371,13 @@ groupbox bounds(5, 140, 305, 125), , identchannel("GROUP_FILTERALL"), plant("GUI
         label    bounds(208,4,100,20), text("FILTER1")
         combobox bounds(55, 15, 55, 20), fontcolour("silver") channel("filter1mode1_B"), items("-","LP3","LP2","HP","BP"), value(1), colour(20,30,40), align("centre")
         rslider bounds(83, 15, 35, 20), range(1, 5, 0, 1, 1),              channel("filter1mode1_K"), $rsliderhiddenstyle
-        rslider bounds(120, 8, 45, 45) range(0, 20000, 1300, 0.25, 0.01),     channel("filter1cut1"), text("Cut 1.1"), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(120, 8, 45, 45) range(15, 20000, 1300, 0.25, 0.01),     channel("filter1cut1"), text("Cut 1.1"), popuppostfix(" Hz"), $rsliderstyle
         rslider bounds(180, 25, 45, 40) range(0.1, 10, 0.1, 1, 0.01),    channel("filter1res1"), text("Res 1.1"), popuppostfix(" "), $rsliderstyle
         rslider bounds(230, 25, 60, 40) range(-100, 100, 0, 1, 0.01),       channel("filter1keytrack1"),  text("Keytrack 1.1"), popuppostfix(" %"), $rsliderstyle
         label    bounds(57,38,50,11), text("Filter 1.1")
         combobox bounds(55, 65, 55, 20), fontcolour("silver") channel("filter1mode2_B"), items("-","LP3","LP2","HP","BP"), value(1), colour(20,30,40), align("centre")
         rslider bounds(83, 65, 35, 20), range(1, 5, 0, 1, 1),             channel("filter1mode2_K"), $rsliderhiddenstyle
-        rslider bounds(120, 58, 45, 45) range(0, 20000, 1300, 0.25, 0.01), channel("filter1cut2"), text("Cut 1.2"), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(120, 58, 45, 45) range(15, 20000, 1300, 0.25, 0.01), channel("filter1cut2"), text("Cut 1.2"), popuppostfix(" Hz"), $rsliderstyle
         rslider bounds(180, 65, 45, 40) range(0.1, 10, 0.1, 1, 0.01),   channel("filter1res2"), text("Res 1.2"), popuppostfix(" "), $rsliderstyle
         rslider bounds(230, 65, 60, 40) range(-100, 100, 0, 1, 0.01),       channel("filter1keytrack2"),  text("Keytrack 1.2"), popuppostfix(" %"), $rsliderstyle
         label    bounds(57,88,50,11), text("Filter 1.2")
@@ -392,13 +392,13 @@ groupbox bounds(5, 140, 305, 125), , identchannel("GROUP_FILTERALL"), plant("GUI
         label    bounds(208,4,100,20), text("FILTER2")
         combobox bounds(55, 15, 55, 20), fontcolour("silver") channel("filter2mode1_B"), items("-","LP3","LP2","HP","BP"), value(1), colour(20,30,40), align("centre")
         rslider bounds(83, 15, 35, 20), range(1, 5, 0, 1, 1),              channel("filter2mode1_K"), $rsliderhiddenstyle
-        rslider bounds(120, 8, 45, 45) range(0, 20000, 1300, 0.25, 0.01),     channel("filter2cut1"), text("Cut 2.1"), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(120, 8, 45, 45) range(15, 20000, 1300, 0.25, 0.01),     channel("filter2cut1"), text("Cut 2.1"), popuppostfix(" Hz"), $rsliderstyle
         rslider bounds(180, 25, 45, 40) range(0.1, 10, 0.1, 1, 0.01),    channel("filter2res1"), text("Res 2.1"), popuppostfix(" "), $rsliderstyle
         rslider bounds(230, 25, 60, 40) range(-100, 100, 0, 1, 0.01),       channel("filter2keytrack1"),  text("Keytrack 2.1"), popuppostfix(" %"), $rsliderstyle
         label    bounds(57,38,50,11), text("Filter 2.1")
         combobox bounds(55, 65, 55, 20), fontcolour("silver") channel("filter2mode2_B"), items("-","LP3","LP2","HP","BP"), value(1), colour(20,30,40), align("centre") 
         rslider bounds(83, 65, 35, 20), range(1, 5, 0, 1, 1),             channel("filter2mode2_K"), $rsliderhiddenstyle
-        rslider bounds(120, 58, 45, 45) range(0, 20000, 1300, 0.25, 0.01), channel("filter2cut2"), text("Cut 2.2"), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(120, 58, 45, 45) range(15, 20000, 1300, 0.25, 0.01), channel("filter2cut2"), text("Cut 2.2"), popuppostfix(" Hz"), $rsliderstyle
         rslider bounds(180, 65, 45, 40) range(0.1, 10, 0.1, 1, 0.01),   channel("filter2res2"), text("Res 2.2"), popuppostfix(" "), $rsliderstyle
         rslider bounds(230, 65, 60, 40) range(-100, 100, 0, 1, 0.01),       channel("filter2keytrack2"),  text("Keytrack 2.2"), popuppostfix(" %"), $rsliderstyle
         label    bounds(57,88,50,11), text("Filter 2.2")
