@@ -3,7 +3,7 @@
 ;****************************************************************************
 ;****************************************************************************
 ;****************************************************************************
-;                           ToneZ v1.3
+;                           ToneZ-T1 v1.3 (t01 2020)
 ;                       T0NIT0 RMX - 2019
 ;                   https://t0nit0rmx.github.io
 ;
@@ -44,7 +44,7 @@ groupbox bounds(560, 0, 172, 407), plant("GUI_HEADER"){
     image        bounds(1, -5, 158, 419), colour(20, 30, 40, 255)
     image        bounds(10, 72, 138, 1), colour("lightblue")
     image        bounds(10, 120, 138, 1), colour("lightblue")
-    image        bounds(10, 277, 138, 1), colour("lightblue")
+    image        bounds(10, 277, 138, 1), colou
     image        bounds(10, 323, 138, 1), colour("lightblue")
     label bounds(5,20,150,10), text("BROKEN GUI"), fontcolour("red")
     label bounds(5,30,150,10), text("Click on the 'About' button"), fontcolour("red")
@@ -210,7 +210,7 @@ groupbox bounds(5, 5, 305, 125), , identchannel("GROUP_OSCALL"), plant("GUI_OSCA
 
 
 
-;*******************ENVELOPPES
+;*******************ENVELOPES
 ;1
 groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_ENVALL"){
     image        bounds(0, 0, 230, 110), colour(0,10,20)
@@ -218,8 +218,8 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         image    bounds(0, 0, 230, 110), colour(20, 30, 40, 255), $bgtabstyle
         label    bounds(172,4,50,20), text("ENV1")
         rslider  bounds(0, 58, 45, 45),    channel("env1a"),        range(0.007, 10, 0.001, 0.5, 0.001),   text("A"), popuppostfix(" s"),    $rsliderstyle
-        rslider  bounds(38, 58, 45, 45),   channel("env1d"),        range(0, 10, 0, 0.5, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env1s"),        range(0.001, 1, 1, 1, 0.001),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(38, 58, 45, 45),   channel("env1d"),        range(0, 10, 0, 0.5, 0.00001),   text("D"), popuppostfix(" s"),  $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env1s"),        range(0.001, 1, 1, 1, 0.00001),   text("S"), popuppostfix(" "),     $rsliderstyle
         rslider  bounds(114, 58, 45, 45),   channel("env1r"),        range(0.007, 10, 0.001, 0.5, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env1amt"), identchannel("ENV1AMT_BUTTON"),   range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
@@ -237,8 +237,8 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         image    bounds(0, 0, 230, 110), colour(20, 30, 40, 255), $bgtabstyle
         label    bounds(172,4,50,20), text("ENV2")
         rslider  bounds(0, 58, 45, 45),    channel("env2a"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("A"), popuppostfix(" s"),   $rsliderstyle
-        rslider  bounds(38, 58, 45, 45),   channel("env2d"),        range(0, 10, 0, 0.5, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env2s"),        range(0.001, 1, 0.001, 0.5, 0.01),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(38, 58, 45, 45),   channel("env2d"),        range(0, 10, 0, 0.5, 0.00001),   text("D"), popuppostfix(" s"),  $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env2s"),        range(0.001, 1, 0.001, 0.5, 0.00001),   text("S"), popuppostfix(" "),     $rsliderstyle
         rslider  bounds(114, 58, 45, 45),   channel("env2r"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env2amt"), identchannel("ENV2AMT_BUTTON"),   range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
@@ -256,9 +256,9 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         image    bounds(0, 0, 230, 110), colour(20, 30, 40, 255), $bgtabstyle
         label    bounds(172,4,50,20), text("ENV3")
         rslider  bounds(0, 58, 45, 45),    channel("env3a"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("A"), popuppostfix(" s"),   $rsliderstyle
-        rslider  bounds(38, 58, 45, 45),   channel("env3d"),        range(0, 10, 0, 0.5, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env3s"),        range(0.001, 1, 0.001, 0.5, 0.01),   text("S"), popuppostfix(" "),     $rsliderstyle
-        rslider  bounds(114, 58, 45, 45),   channel("env3r"),        range(0.001, 10, 0.001, 0.5, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
+        rslider  bounds(38, 58, 45, 45),   channel("env3d"),        range(0, 10, 0, 0.5, 0.00001),   text("D"), popuppostfix(" s"),  $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env3s"),        range(0.001, 1, 0.001, 0.5, 0.00001),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(114, 58, 45, 45),   channel("env3r"),        range(0.001, 10, 0.001, 0.5, 0.00001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env3amt"), identchannel("ENV3AMT_BUTTON"),  range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
         button bounds(5, 30, 38, 17),   channel("env3osc1"), identchannel("ENV3OSC1_BUTTON"), text("OSC1"), value(0), $checkboxstyle
@@ -275,9 +275,9 @@ groupbox bounds(320, 5, 230, 125), , identchannel("GROUP_ENVALL"), plant("GUI_EN
         image    bounds(0, 0, 230, 110), colour(20, 30, 40, 255), $bgtabstyle
         label    bounds(172,4,50,20), text("ENV4")
         rslider  bounds(0, 58, 45, 45),    channel("env4a"),        range(0.001, 10, 0.001, 0.25, 0.001),   text("A"), popuppostfix(" s"),   $rsliderstyle
-        rslider  bounds(38, 58, 45, 45),   channel("env4d"),        range(0, 10, 0, 0.25, 0.001),   text("D"), popuppostfix(" s"),  $rsliderstyle
-        rslider  bounds(76, 58, 45, 45),   channel("env4s"),        range(0.001, 1, 0.001, 0.5, 0.01),   text("S"), popuppostfix(" "),     $rsliderstyle
-        rslider  bounds(114, 58, 45, 45),   channel("env4r"),        range(0.001, 10, 0.001, 0.25, 0.001),   text("R"), popuppostfix(" s"), $rsliderstyle
+        rslider  bounds(38, 58, 45, 45),   channel("env4d"),        range(0, 10, 0, 0.25, 0.00001),   text("D"), popuppostfix(" s"),  $rsliderstyle
+        rslider  bounds(76, 58, 45, 45),   channel("env4s"),        range(0.001, 1, 0.001, 0.5, 0.00001),   text("S"), popuppostfix(" "),     $rsliderstyle
+        rslider  bounds(114, 58, 45, 45),   channel("env4r"),        range(0.001, 10, 0.001, 0.25, 0.00001),   text("R"), popuppostfix(" s"), $rsliderstyle
         rslider  bounds(170, 58, 45, 45),  channel("env4amt"), identchannel("ENV4AMT_BUTTON"),   range(-100, 100, 100, 1, 0.01),   text("Amt"), popuppostfix(" %"), $rsliderstyle
 
         button bounds(5, 30, 38, 17),   channel("env4osc1"), identchannel("ENV4OSC1_BUTTON"), text("OSC1"), value(0), $checkboxstyle
@@ -371,14 +371,14 @@ groupbox bounds(5, 140, 305, 125), , identchannel("GROUP_FILTERALL"), plant("GUI
         label    bounds(208,4,100,20), text("FILTER1")
         combobox bounds(55, 15, 55, 20), fontcolour("silver") channel("filter1mode1_B"), items("-","LP3","LP2","HP","BP"), value(1), colour(20,30,40), align("centre")
         rslider bounds(83, 15, 35, 20), range(1, 5, 0, 1, 1),              channel("filter1mode1_K"), $rsliderhiddenstyle
-        rslider bounds(120, 8, 45, 45) range(0, 20000, 1300, 0.25, 0.01),     channel("filter1cut1"), text("Cut 1.1"), popuppostfix(" Hz"), $rsliderstyle
-        rslider bounds(180, 25, 45, 40) range(0.1, 10, 0.1, 1, 0.01),    channel("filter1res1"), text("Res 1.1"), popuppostfix(" "), $rsliderstyle
+        rslider bounds(120, 8, 45, 45) range(20, 20000, 1300, 0.25, 0.01),     channel("filter1cut1"), text("Cut 1.1"), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(180, 25, 45, 40) range(0.1, 2.0, 0.1, 1, 0.01),    channel("filter1res1"), text("Res 1.1"), popuppostfix(" "), $rsliderstyle
         rslider bounds(230, 25, 60, 40) range(-100, 100, 0, 1, 0.01),       channel("filter1keytrack1"),  text("Keytrack 1.1"), popuppostfix(" %"), $rsliderstyle
         label    bounds(57,38,50,11), text("Filter 1.1")
         combobox bounds(55, 65, 55, 20), fontcolour("silver") channel("filter1mode2_B"), items("-","LP3","LP2","HP","BP"), value(1), colour(20,30,40), align("centre")
         rslider bounds(83, 65, 35, 20), range(1, 5, 0, 1, 1),             channel("filter1mode2_K"), $rsliderhiddenstyle
-        rslider bounds(120, 58, 45, 45) range(0, 20000, 1300, 0.25, 0.01), channel("filter1cut2"), text("Cut 1.2"), popuppostfix(" Hz"), $rsliderstyle
-        rslider bounds(180, 65, 45, 40) range(0.1, 10, 0.1, 1, 0.01),   channel("filter1res2"), text("Res 1.2"), popuppostfix(" "), $rsliderstyle
+        rslider bounds(120, 58, 45, 45) range(20, 20000, 1300, 0.25, 0.01), channel("filter1cut2"), text("Cut 1.2"), popuppostfix(" Hz"), $rsliderstyle
+        rslider bounds(180, 65, 45, 40) range(0.1, 2.0, 0.1, 1, 0.01),   channel("filter1res2"), text("Res 1.2"), popuppostfix(" "), $rsliderstyle
         rslider bounds(230, 65, 60, 40) range(-100, 100, 0, 1, 0.01),       channel("filter1keytrack2"),  text("Keytrack 1.2"), popuppostfix(" %"), $rsliderstyle
         label    bounds(57,88,50,11), text("Filter 1.2")
 
@@ -508,7 +508,7 @@ button bounds(0, 0, 719, 468), visible(0), colour(0,0,0), alpha(0), identchannel
 ;ABOUT TAB
 groupbox bounds(100, 100, 500, 300), visible(0) , identchannel("GROUP_ABOUT"), plant("GUI_ABOUT"){
     image    bounds(0, 0, 500, 300), colour(20, 30, 40, 255)
-    label    bounds(0,20,500,20), text("ToneZ by T0NIT0 RMX - v1.3")
+    label    bounds(0,20,500,20), text("ToneZ by T0NIT0 RMX - v1.3 T1(Taron edit)")
     infobutton bounds(400, 18, 100, 23), text("Check for updates"), file("https://t0nit0rmx.github.io/utils/tonez_uc?v=1.3"), latched(0), $buttonstyle
     label    bounds(130,100,100,10), text("[[USER MANUAL]]")
     image        bounds(100, 70, 150, 72), file("img/AboutMan.png"), colour(0,0,0,0.5)
@@ -688,15 +688,17 @@ opcode	SsplinePort,k,KkkO
     xout	kout                                                                                    ;SEND PORTAMENTOED VALUES BACK TO CALLER INSTRUMENT
 endop
 
+opcode SuperOsc2, aa, kakikkkkkkikkkkk
 
-opcode SuperOsc2, aa, akikkkkkkikkkkk
-
-    aVol, kFreq, iPhase, kWave1, kWave2, kMorph, kDet, kWid, kVoice, iRetrig, kOct, kSemi, kCent, kpb, kNoteTrig xin
+    kVol, aEnv, kFreq, iPhase, kWave1, kWave2, kMorph, kDet, kWid, kVoice, iRetrig, kOct, kSemi, kCent, kpb, kNoteTrig xin
     amixL = 0
     amixR = 0 
-    aVol/=100
-    if k(aVol)!=0 then
-        aVol limit aVol, 0, 1
+    if k(aEnv)>0.002 then
+        aVol=kVol/200
+        if k(aEnv)<0.02 then
+            aVol*=aEnv*50
+        endif 
+        ;aVol limit aVol, 0, 1
         kWave1-=1
         kWave2-=1
         idiff1 chnget "detsh1"
@@ -797,66 +799,75 @@ opcode keytrack, a,kak
 endop
 
 
-opcode MultiFilter, aa, aaakkkkkkkkk
-    al, ar, aenvfilter1, kmodefilter1, kcut1, kres1, ktrack1, kmodefilter2, kcut2, kres2, ktrack2, kpitch xin
+opcode MultiFilter, aa, aaaakkkkkkkkk
+    al, ar, aVolEnv, aenvfilter1, kmodefilter1, kcut1, kres1, ktrack1, kmodefilter2, kcut2, kres2, ktrack2, kpitch xin
 
-    ascaled1 keytrack kpitch, a(kcut1)*156.25+aenvfilter1, ktrack1/100
-    ascaled2 keytrack kpitch, a(kcut2), ktrack2/100
-    kscaled2 rms ascaled2
     alpl = al
     alpr = ar
-    if (kcut1 != 128) then
-        if kmodefilter1 == 2 then
-        ascaled1 limit ascaled1, 0, 12500 
-            alpl lpf18  al, ascaled1, kres1,0
-            alpr lpf18 ar, ascaled1, kres1,0
+    if k(aVolEnv)>0.002 then
+        if k(aVolEnv)<0.02 then
+            alpl*=aVolEnv*50
+            alpr*=aVolEnv*50
+        endif 
+        denorm alpl,alpr
+        
+   
+        ascaled1 keytrack kpitch, a(kcut1)*156.25+aenvfilter1, ktrack1/100
+        ascaled2 keytrack kpitch, a(kcut2), ktrack2/100
+        kscaled2 rms ascaled2
+        if (kcut1 != 128) then
+            if kmodefilter1 == 2 then
+            ascaled1 limit ascaled1, 0, 12500 
+                alpl lpf18  al, ascaled1, kres1,0
+                alpr lpf18 ar, ascaled1, kres1,0
             
+            endif
+            if kmodefilter1 == 3 then
+            ascaled1 limit ascaled1*2, 0, 21000
+                alpl zdf_2pole al, ascaled1, kres1,0
+                alpr zdf_2pole ar, ascaled1, kres1,0
+            endif
         endif
-        if kmodefilter1 == 3 then
-        ascaled1 limit ascaled1*2, 0, 21000
-            alpl zdf_2pole al, ascaled1, kres1,0
-            alpr zdf_2pole ar, ascaled1, kres1,0
+        if (kcut1 != 0) then
+            if kmodefilter1 == 4 then
+                ascaled1 limit ascaled1, 0, 21000
+                alpl zdf_2pole al, ascaled1, kres1,1
+                alpr zdf_2pole ar, ascaled1, kres1,1
+            endif
         endif
-    endif
-    if (kcut1 != 0) then
-        if kmodefilter1 == 4 then
-            ascaled1 limit ascaled1, 0, 21000
-            alpl zdf_2pole al, ascaled1, kres1,1
-            alpr zdf_2pole ar, ascaled1, kres1,1
-        endif
-    endif
-        if kmodefilter1 == 5 then
-            ascaled1 limit ascaled1, 0, 21000
-            alpl zdf_2pole al, ascaled1, kres1,2
-            alpr zdf_2pole ar, ascaled1, kres1,2
-        endif
+            if kmodefilter1 == 5 then
+                ascaled1 limit ascaled1, 0, 21000
+                alpl zdf_2pole al, ascaled1, kres1,2
+                alpr zdf_2pole ar, ascaled1, kres1,2
+            endif
     
     
-    if (kcut2 != 128) then
-        if kmodefilter2 == 2 then
-        ascaled2 limit ascaled2, 0, 12500 
-            alpl lpf18 alpl, ascaled2, kres2,0
-            alpr lpf18 alpr, ascaled2, kres2,0
+        if (kcut2 != 128) then
+            if kmodefilter2 == 2 then
+            ascaled2 limit ascaled2, 0, 12500 
+                alpl lpf18 alpl, ascaled2, kres2,0
+                alpr lpf18 alpr, ascaled2, kres2,0
+            endif
+            if kmodefilter2 == 3 then
+                kscaled2 limit kscaled2*2, 0, 21000
+                alpl zdf_2pole alpl, ascaled2, kres2,0
+                alpr zdf_2pole alpr, ascaled2, kres2,0
+            endif
         endif
-        if kmodefilter2 == 3 then
-            kscaled2 limit kscaled2*2, 0, 21000
-            alpl zdf_2pole alpl, ascaled2, kres2,0
-            alpr zdf_2pole alpr, ascaled2, kres2,0
+        if (kcut2 != 0) then
+            if kmodefilter2 == 4 then
+                kscaled2 limit kscaled2, 0, 21000
+                alpl zdf_2pole alpl, ascaled2, kres2,1
+                alpr zdf_2pole alpr, ascaled2, kres2,1
+            endif
         endif
-    endif
-    if (kcut2 != 0) then
-        if kmodefilter2 == 4 then
-            kscaled2 limit kscaled2, 0, 21000
-            alpl zdf_2pole alpl, ascaled2, kres2,1
-            alpr zdf_2pole alpr, ascaled2, kres2,1
-        endif
-    endif
-        if kmodefilter2 == 5 then
-            kscaled2 limit kscaled2, 0, 21000
-            alpl zdf_2pole alpl, ascaled2, kres2,2
-            alpr zdf_2pole alpr, ascaled2, kres2,2
-        endif
-    denorm alpl,alpr
+            if kmodefilter2 == 5 then
+                kscaled2 limit kscaled2, 0, 21000
+                alpl zdf_2pole alpl, ascaled2, kres2,2
+                alpr zdf_2pole alpr, ascaled2, kres2,2
+            endif
+        denorm alpl,alpr
+    endif             
     xout alpl,alpr
 endop
 
@@ -1119,7 +1130,7 @@ opcode ToneZ,aa,kkkk
     gkenv4d chnget "env4d"
     gkenv4s chnget "env4s"
     gkenv4r chnget "env4r"
-
+    
     cngoto gkNoteTrig==1&&gkSARetrig==1, SHAPE_ENV
     reinit SHAPE_ENV
     SHAPE_ENV:
@@ -1678,16 +1689,20 @@ opcode ToneZ,aa,kkkk
     endif
       
     VOICECHANGE:                      
-    a1l ,a1r SuperOsc2 gkosc1vol*aosc1envamp*kvel, kosc1pitch, iosc1phase, gkosc1wave1, gkosc1wave2, gkosc1morph, gkosc1det, gkosc1wid, gkosc1voice, iosc1retrig, gkosc1octave, gkosc1semi, gkosc1cent, gkpb, gkNoteTrig
+    aTotalvol1 = gkosc1vol*aosc1envamp
+    aTotalvol2 = gkosc2vol*aosc2envamp
+    aTotalvol3 = gkosc3vol*aosc3envamp
+    aTotalvol4 = gkosc4vol*aosc4envamp
+    a1l ,a1r SuperOsc2 gkosc1vol, aosc1envamp, kosc1pitch, iosc1phase, gkosc1wave1, gkosc1wave2, gkosc1morph, gkosc1det, gkosc1wid, gkosc1voice, iosc1retrig, gkosc1octave, gkosc1semi, gkosc1cent, gkpb, gkNoteTrig
     a1l ntrpol a1l*2,a(0),gkosc1pan/100
     a1r ntrpol a(0),a1r*2,gkosc1pan/100
-    a2l ,a2r SuperOsc2 gkosc2vol*aosc2envamp*kvel, kosc2pitch, iosc2phase, gkosc2wave1, gkosc2wave2, gkosc2morph, gkosc2det, gkosc2wid, gkosc2voice, iosc2retrig, gkosc2octave, gkosc2semi, gkosc2cent, gkpb, gkNoteTrig
+    a2l ,a2r SuperOsc2 gkosc2vol, aosc2envamp, kosc2pitch, iosc2phase, gkosc2wave1, gkosc2wave2, gkosc2morph, gkosc2det, gkosc2wid, gkosc2voice, iosc2retrig, gkosc2octave, gkosc2semi, gkosc2cent, gkpb, gkNoteTrig
     a2l ntrpol a2l*2,a(0),gkosc2pan/100
     a2r ntrpol a(0),a2r*2,gkosc2pan/100
-    a3l ,a3r SuperOsc2 gkosc3vol*aosc3envamp*kvel, kosc3pitch, iosc3phase, gkosc3wave1, gkosc3wave2, gkosc3morph, gkosc3det, gkosc3wid, gkosc3voice, iosc3retrig, gkosc3octave, gkosc3semi, gkosc3cent, gkpb, gkNoteTrig
+    a3l ,a3r SuperOsc2 gkosc3vol, aosc3envamp, kosc3pitch, iosc3phase, gkosc3wave1, gkosc3wave2, gkosc3morph, gkosc3det, gkosc3wid, gkosc3voice, iosc3retrig, gkosc3octave, gkosc3semi, gkosc3cent, gkpb, gkNoteTrig
     a3l ntrpol a3l*2,a(0),gkosc3pan/100
     a3r ntrpol a(0),a3r*2,gkosc3pan/100
-    a4l ,a4r SuperOsc2 gkosc4vol*aosc4envamp*kvel, kosc4pitch, iosc4phase, gkosc4wave1, gkosc4wave2, gkosc4morph, gkosc4det, gkosc4wid, gkosc4voice, iosc4retrig, gkosc4octave, gkosc4semi, gkosc4cent, gkpb, gkNoteTrig  
+    a4l ,a4r SuperOsc2 gkosc4vol, aosc4envamp, kosc4pitch, iosc4phase, gkosc4wave1, gkosc4wave2, gkosc4morph, gkosc4det, gkosc4wid, gkosc4voice, iosc4retrig, gkosc4octave, gkosc4semi, gkosc4cent, gkpb, gkNoteTrig  
     a4l ntrpol a4l*2,a(0),gkosc4pan/100
     a4r ntrpol a(0),a4r*2,gkosc4pan/100
     rireturn
@@ -1705,35 +1720,36 @@ opcode ToneZ,aa,kkkk
     aenvfilter1 interp kenvfilter1
     aenvfilter2 interp kenvfilter2 
     kpitch=knum
-                            
+    
     if (gkfilter1osc1==1 && (gkfilter1mode1 != 0 || gkfilter1mode2 != 0)) then
-        a1l, a1r MultiFilter a1l, a1r, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
+        a1l, a1r MultiFilter a1l, a1r, aosc1envamp, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
     endif
     if (gkfilter1osc2==1 && (gkfilter1mode1 != 0 || gkfilter1mode2 != 0)) then
-        a2l, a2r MultiFilter a2l, a2r, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
+        a2l, a2r MultiFilter a2l, a2r, aosc2envamp, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
     endif
     if (gkfilter1osc3==1 && (gkfilter1mode1 != 0 || gkfilter1mode2 != 0)) then
-        a3l, a3r MultiFilter a3l, a3r, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
+        a3l, a3r MultiFilter a3l, a3r, aosc3envamp, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
     endif
     if (gkfilter1osc4==1 && (gkfilter1mode1 != 0 || gkfilter1mode2 != 0)) then
-        a4l, a4r MultiFilter a4l, a4r, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
+        a4l, a4r MultiFilter a4l, a4r, aosc4envamp, aenvfilter1, gkfilter1mode1, gkfilter1cut1, gkfilter1res1, gkfilter1keytrack1, gkfilter1mode2, gkfilter1cut2, gkfilter1res2, gkfilter1keytrack2, kpitch
     endif
         
     if (gkfilter2osc1==1 && (gkfilter2mode1 != 0 || gkfilter2mode2 != 0)) then
-        a1l, a1r MultiFilter a1l, a1r, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
+        a1l, a1r MultiFilter a1l, a1r, aosc1envamp, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
     endif
     if (gkfilter2osc2==1 && (gkfilter2mode1 != 0 || gkfilter2mode2 != 0)) then
-        a2l, a2r MultiFilter a2l, a2r, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
+        a2l, a2r MultiFilter a2l, a2r, aosc2envamp, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
     endif
     if (gkfilter2osc3==1 && (gkfilter2mode1 != 0 || gkfilter2mode2 != 0)) then
-        a3l, a3r MultiFilter a3l, a3r, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
+        a3l, a3r MultiFilter a3l, a3r, aosc3envamp, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
     endif
     if (gkfilter2osc4==1 && (gkfilter2mode1 != 0 || gkfilter2mode2 != 0)) then
-        a4l, a4r MultiFilter a4l, a4r, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
+        a4l, a4r MultiFilter a4l, a4r, aosc4envamp, aenvfilter2, gkfilter2mode1, gkfilter2cut1, gkfilter2res1, gkfilter2keytrack1, gkfilter2mode2, gkfilter2cut2, gkfilter2res2, gkfilter2keytrack2, kpitch
     endif
         
-    asuml = (a1l+a2l+a3l+a4l)
-    asumr = (a1r+a2r+a3r+a4r)
+    avel = kvel/127            
+    asuml = (a1l*aTotalvol1+a2l*aTotalvol2+a3l*aTotalvol3+a4l*aTotalvol4)*avel
+    asumr = (a1r*aTotalvol1+a2r*aTotalvol2+a3r*aTotalvol3+a4r*aTotalvol4)*avel
     
     gkNoteTrig	=	0
     xout asuml,asumr
