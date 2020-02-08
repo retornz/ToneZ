@@ -44,7 +44,7 @@ groupbox bounds(560, 0, 172, 407), plant("GUI_HEADER"){
     image        bounds(1, -5, 158, 419), colour(20, 30, 40, 255)
     image        bounds(10, 72, 138, 1), colour("lightblue")
     image        bounds(10, 120, 138, 1), colour("lightblue")
-    image        bounds(10, 277, 138, 1), colou
+    image        bounds(10, 277, 138, 1), colour("lightblue")
     image        bounds(10, 323, 138, 1), colour("lightblue")
     label bounds(5,20,150,10), text("BROKEN GUI"), fontcolour("red")
     label bounds(5,30,150,10), text("Click on the 'About' button"), fontcolour("red")
