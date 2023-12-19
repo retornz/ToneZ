@@ -1,3 +1,4 @@
 # ToneZ
-ToneZ free plugin made in Cabbage
-https://t0nit0rmx.github.io/plugins/tonez
+ToneZ by Retornz
+Free plugin made in Cabbage
+https://retornz.com/plugins/tonez
