@@ -25,7 +25,7 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf64}\Steinberg\vstplugins
 DisableProgramGroupPage=yes
 LicenseFile= "Utils/LICENSE"
-OutputBaseFilename=ToneZ_V2_x64_{#MyAppVersion}_Setup
+OutputBaseFilename=ToneZ_V2-x64-{#MyAppVersion}_Setup
 SetupIconFile=Utils/ToneZ.ico
 Compression=lzma
 SolidCompression=yes
@@ -54,10 +54,10 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 [CustomMessages]
 CustomMessage=Undefined //just in case (should be equal to English)
 english.CustomMessage=No component selected 
-french.CustomMessage=Aucun composent sélectionné
+french.CustomMessage=Aucun composent sÃ©lectionnÃ©
 
 [Messages]
-french.SelectDirLabel3=L'assistant va installer le plugin [name] dans le dossier suivant. Pour continuer, cliquez sur Suivant. Si vous souhaitez choisir un dossier différent, cliquez sur Parcourir.
+french.SelectDirLabel3=L'assistant va installer le plugin [name] dans le dossier suivant. Pour continuer, cliquez sur Suivant. Si vous souhaitez choisir un dossier diffÃ©rent, cliquez sur Parcourir.
 french.SelectDirBrowseLabel=Plugin VST 64-bit
 english.SelectDirLabel3=Setup will install [name] plugin into the following folder. To continue, click Next. If you would like to select a different folder, click Browse.
 english.SelectDirBrowseLabel=64-bit VST plugin
@@ -67,7 +67,7 @@ Source: "{#BuildDir}\{#MyPluginName}\*"; DestDir: "C:\ProgramData\Retornz\{#MyPl
 Source: "{#BuildDir}/{#MyPluginName}.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: vst2; Permissions: users-full;
 Source: "{#BuildDir}/csound64.dll"; DestDir: "C:\Program Files\Csound6_x64\bin"; Flags: ignoreversion; Components: vst2 vst3; Permissions: users-full;
 Source: "Utils\Discord.bmp"; Components: vst2 vst3; Flags: dontcopy
-Source: "{#BuildDir}/{#MyPluginName}.vst3\Contents\x86_64-win\*"; DestDir: "C:\Program Files\Common Files\VST3\{#MyPluginName}.vst3\Contents\x86_64-win\"; Flags: ignoreversion; Components: vst3; Permissions: users-full;
+Source: "{#BuildDir}/{#MyPluginName}.vst3"; DestDir: "C:\Program Files\Common Files\VST3"; Flags: ignoreversion; Components: vst3; Permissions: users-full;
 
 [Code]
 //	ModPathName defines the name of the task defined above
